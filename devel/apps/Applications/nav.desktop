@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=GPS speed and distance meter
+Exec=nav
+Icon=nav
+Type=Application
+MimeType=text/*
+Name=Nav

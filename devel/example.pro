@@ -1,0 +1,10 @@
+TEMPLATE	= app
+#CONFIG		= qt warn_on debug
+CONFIG		= qt warn_on release
+HEADERS		= mp3playerapp.h
+SOURCES		= main.cpp mp3playerapp.cpp
+INCLUDEPATH	+= $(QPEDIR)/include
+DEPENDPATH	+= $(QPEDIR)/include
+LIBS            += -lqpe -lstdc++
+INTERFACES	= mp3player.ui
+TARGET		= mp3player
