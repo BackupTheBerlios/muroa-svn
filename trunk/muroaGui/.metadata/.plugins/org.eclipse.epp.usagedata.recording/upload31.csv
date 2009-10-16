@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+error,log,,,"Error logged from Debug Core: ",1255271946629
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255271946632
+activated,view,org.eclipse.ui.console,3.4.0.v20090513,"org.eclipse.ui.console.ConsoleView",1255271947406
+activated,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.editor.CEditor",1255271962800
+activated,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.editor.CEditor",1255271967472
+activated,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.editor.CEditor",1255271973781
+executed,command,org.eclipse.ui.workbench.texteditor,3.5.0.v20090603,"org.eclipse.ui.edit.text.goto.lineEnd",1255271977040
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.edit.delete",1255271988712
+activated,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.editor.CEditor",1255271994924
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.edit.copy",1255271998815
+activated,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.editor.CEditor",1255271999995
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.edit.paste",1255272002785
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.file.save",1255272014450
+executed,command,org.eclipse.ui.workbench.texteditor,3.5.0.v20090603,"org.eclipse.ui.edit.text.goto.lineStart",1255272015857
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.file.save",1255272017771
+executed,command,org.eclipse.ui.ide,3.5.0.I20090525-2000,"org.eclipse.ui.project.buildAll",1255272018652
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255272019215
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255272026078
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255272031816
+error,log,,,"Error logged from Debug Core: ",1255272048546
+error,log,,,"Error logged from Debug Core: ",1255272050347
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255272050352
+activated,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.editor.CEditor",1255272295777
+activated,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.editor.CEditor",1255272300120
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255272308611

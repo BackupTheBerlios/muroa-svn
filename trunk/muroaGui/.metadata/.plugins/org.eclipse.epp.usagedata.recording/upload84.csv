@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+opened,view,org.eclipse.debug.ui,3.5.0.v20090603,"org.eclipse.debug.ui.RegisterView",1255633195456
+opened,view,org.eclipse.debug.ui,3.5.0.v20090603,"org.eclipse.debug.ui.ModuleView",1255633195483
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255633195626
+executed,command,org.eclipse.debug.ui,3.5.0.v20090603,"org.eclipse.debug.ui.commands.Resume",1255633198511
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255633199188
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255633211044
+activated,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.editor.CEditor",1255633211235
+activated,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.editor.CEditor",1255633215422
+opened,editor,com.trolltech.qtcppproject,1.5.2,"com.trolltech.qtcppproject.editors.ProEditor",1255633217656
+activated,editor,com.trolltech.qtcppproject,1.5.2,"com.trolltech.qtcppproject.editors.ProEditor",1255633219381
+activated,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.editor.CEditor",1255633219856
+activated,view,org.eclipse.debug.ui,3.5.0.v20090603,"org.eclipse.debug.ui.DebugView",1255633219915
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255633235971
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255633240860
+activated,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.editor.CEditor",1255633241042
+activated,view,org.eclipse.ui.console,3.4.0.v20090513,"org.eclipse.ui.console.ConsoleView",1255633245793
+closed,view,org.eclipse.debug.ui,3.5.0.v20090603,"org.eclipse.debug.ui.MemoryView",1255633261978
+closed,view,org.eclipse.debug.ui,3.5.0.v20090603,"org.eclipse.debug.ui.RegisterView",1255633261991
+closed,view,org.eclipse.debug.ui,3.5.0.v20090603,"org.eclipse.debug.ui.ModuleView",1255633262002
+activated,view,org.eclipse.debug.ui,3.5.0.v20090603,"org.eclipse.debug.ui.DebugView",1255633294419
+error,log,,,"Internal error logged from CDI Debug: ",1255633298211
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255633301921
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255633302404
+opened,view,org.eclipse.debug.ui,3.5.0.v20090603,"org.eclipse.debug.ui.MemoryView",1255633302685
+opened,view,org.eclipse.debug.ui,3.5.0.v20090603,"org.eclipse.debug.ui.RegisterView",1255633302779

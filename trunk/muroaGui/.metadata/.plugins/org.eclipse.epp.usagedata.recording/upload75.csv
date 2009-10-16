@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+started,bundle,org.eclipse.update.scheduler,3.2.200.v20081127,"org.eclipse.update.scheduler",1255459310580
+started,bundle,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner",1255459310580
+started,bundle,com.trolltech.qtcppproject,1.5.2,"com.trolltech.qtcppproject",1255459310581
+started,bundle,org.tigris.subversion.clientadapter,1.5.3,"org.tigris.subversion.clientadapter",1255459310581
+started,bundle,org.tigris.subversion.subclipse.core,1.4.8,"org.tigris.subversion.subclipse.core",1255459310581
+started,bundle,org.tigris.subversion.subclipse.ui,1.4.8,"org.tigris.subversion.subclipse.ui",1255459310594
+os,sysinfo,,,"linux",1255459310601
+arch,sysinfo,,,"x86_64",1255459310601
+ws,sysinfo,,,"gtk",1255459310601
+locale,sysinfo,,,"en_GB",1255459310601
+processors,sysinfo,,,"4",1255459310602
+java.runtime.name,sysinfo,,,"OpenJDK Runtime Environment",1255459310602
+java.runtime.version,sysinfo,,,"1.6.0_0-b14",1255459310602
+java.specification.name,sysinfo,,,"Java Platform API Specification",1255459310602
+java.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1255459310602
+java.specification.version,sysinfo,,,"1.6",1255459310602
+java.vendor,sysinfo,,,"Sun Microsystems Inc.",1255459310602
+java.version,sysinfo,,,"1.6.0_0",1255459310602
+java.vm.info,sysinfo,,,"mixed mode",1255459310602
+java.vm.name,sysinfo,,,"OpenJDK 64-Bit Server VM",1255459310602
+java.vm.specification.name,sysinfo,,,"Java Virtual Machine Specification",1255459310602
+java.vm.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1255459310602
+java.vm.specification.version,sysinfo,,,"1.0",1255459310602
+java.vm.vendor,sysinfo,,,"Sun Microsystems Inc.",1255459310602
+java.vm.version,sysinfo,,,"14.0-b08",1255459310602

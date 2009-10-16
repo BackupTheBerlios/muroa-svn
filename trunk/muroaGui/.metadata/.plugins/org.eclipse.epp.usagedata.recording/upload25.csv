@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+activated,view,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.views.signalsloteditorview",1255270668327
+activated,editor,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.editors.UiEditor",1255270669947
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.file.save",1255270679595
+executed,command,org.eclipse.ui.ide,3.5.0.I20090525-2000,"org.eclipse.ui.project.buildAll",1255270681449
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255270681982
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255270687470
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255270693463
+error,log,,,"Error logged from Debug Core: ",1255270701470
+error,log,,,"Error logged from Debug Core: ",1255270703330
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255270703335
+activated,view,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.CView",1255270707424
+activated,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.editor.CEditor",1255270711342
+activated,view,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.CView",1255270715432
+activated,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.editor.CEditor",1255270715673
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.edit.copy",1255270719718
+activated,view,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.CView",1255270723472
+activated,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.editor.CEditor",1255270723744
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.edit.paste",1255270724635
+activated,editor,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.editors.UiEditor",1255270730667
+activated,view,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.views.actioneditorview",1255270734214
+activated,view,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.views.propertyeditorview",1255270736925
+no handler,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.edit.delete",1255270739509
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.file.save",1255270740423
+executed,command,org.eclipse.ui.ide,3.5.0.I20090525-2000,"org.eclipse.ui.project.buildAll",1255270743335
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255270743962

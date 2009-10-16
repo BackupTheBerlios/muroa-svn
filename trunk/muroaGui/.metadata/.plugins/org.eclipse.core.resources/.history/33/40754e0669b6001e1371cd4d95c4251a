@@ -1,0 +1,12 @@
+#include "muroagui.h"
+
+muroagui::muroagui(QWidget *parent)
+    : QMainWindow(parent)
+{
+	ui.setupUi(this);
+}
+
+muroagui::~muroagui()
+{
+
+}

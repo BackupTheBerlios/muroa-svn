@@ -1,0 +1,19 @@
+#ifndef MUROASERVER_H
+#define MUROASERVER_H
+
+#include <QtGui/QMainWindow>
+#include "ui_muroaserver.h"
+
+class muroaserver : public QMainWindow
+{
+    Q_OBJECT
+
+public:
+    muroaserver(QWidget *parent = 0);
+    ~muroaserver();
+
+private:
+    Ui::muroaserverClass ui;
+};
+
+#endif // MUROASERVER_H

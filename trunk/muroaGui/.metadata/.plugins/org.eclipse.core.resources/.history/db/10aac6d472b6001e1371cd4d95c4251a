@@ -1,0 +1,15 @@
+#include "muroaserver.h"
+
+muroaserver::muroaserver(QWidget *parent)
+    : QMainWindow(parent)
+{
+	ui.setupUi(this);
+	connect(ui.actionExit, SIGNAL(triggered()), qApp, SLOT(quit()));
+
+	statusBar()->addWidget(&m_connection_status_label);
+}
+
+muroaserver::~muroaserver()
+{
+
+}

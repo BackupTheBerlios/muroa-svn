@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;muroaserver/chwtest.cpp&apos; to &apos;cconnection.cpp&apos;" description="Rename resource &apos;chwtest.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="chwtest.cpp" name="cconnection.cpp" stamp="1255269944675" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;muroaserver/chwtest.h&apos; to &apos;cconnection.h&apos;" description="Rename resource &apos;chwtest.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="chwtest.h" name="cconnection.h" stamp="1255269964969" updateReferences="true"/>
+</session>

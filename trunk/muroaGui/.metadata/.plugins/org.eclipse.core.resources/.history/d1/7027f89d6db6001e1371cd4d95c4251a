@@ -1,0 +1,28 @@
+#ifndef CHWACCESS_H
+#define CHWACCESS_H
+
+#include <QObject>
+#include <tr1/cstdint>
+
+class CHwAccess : public QObject
+{
+public:
+    CHwAccess(std::tr1::uint32_t base_addr);
+    ~CHwAccess();
+
+    std::tr1::uint32_t read32(std::tr1::uint32_t offset);
+    std::tr1::uint16_t read16(std::tr1::uint32_t offset);
+    std::tr1::uint8_t  read8(std::tr1::uint32_t offset);
+
+    int write32(std::tr1::uint32_t offset, std::tr1::uint32_t value);
+    int write16(std::tr1::uint32_t offset, std::tr1::uint16_t value);
+    int write8(std::tr1::uint32_t offset, std::tr1::uint8_t value);
+
+private:
+    std::tr1::uint32_t m_base_addr;
+
+    int m_fd;
+
+};
+
+#endif // CHWACCESS_H

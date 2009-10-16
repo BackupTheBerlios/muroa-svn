@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+executed,command,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.edit.text.rename.element",1255272338099
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255272338268
+executed,command,org.eclipse.ui.ide,3.5.0.I20090525-2000,"org.eclipse.ui.project.buildAll",1255272340903
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255272341454
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255272346537
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255272422349
+error,log,,,"Error logged from Debug Core: ",1255272430317
+error,log,,,"Error logged from Debug Core: ",1255272432660
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255272432675
+activated,view,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.CView",1255272444656
+activated,editor,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.editors.UiEditor",1255272446207
+activated,view,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.views.propertyeditorview",1255272452367
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.file.save",1255272490570
+activated,view,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.CView",1255272492060
+activated,editor,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.editors.UiEditor",1255272492909
+activated,view,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.views.propertyeditorview",1255272499321
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.file.save",1255272509937
+activated,editor,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.editors.UiEditor",1255272511714
+activated,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.editor.CEditor",1255272512851
+activated,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.editor.CEditor",1255272513018
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255272515035
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255273789590
+activated,view,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.CView",1255273796096
+activated,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.editor.CEditor",1255273797315
+activated,view,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.CView",1255273807604

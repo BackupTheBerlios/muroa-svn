@@ -1,0 +1,26 @@
+#include "muroaserver.h"
+#include "chwtest.h"
+
+#include <QtGui>
+#include <QApplication>
+
+int main(int argc, char *argv[])
+{
+    int retval;
+    QApplication a(argc, argv);
+    muroaserver w;
+
+    try
+    {
+        CHwTest hwtest;
+        w.show();
+        retval = a.exec();
+    }
+    catch(...)
+    {
+        cerr << "got exception" << endl;
+        retval = 32;
+    }
+
+    return retval;
+}

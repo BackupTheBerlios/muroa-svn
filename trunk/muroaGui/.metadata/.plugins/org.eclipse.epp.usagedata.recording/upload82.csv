@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255632992630
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255632994072
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255633024363
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.edit.delete",1255633042687
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.file.save",1255633062679
+started,bundle,org.tigris.subversion.clientadapter.javahl,1.5.7,"org.tigris.subversion.clientadapter.javahl",1255633062730
+started,bundle,org.tigris.subversion.clientadapter.svnkit,1.5.6.1,"org.tigris.subversion.clientadapter.svnkit",1255633062756
+started,bundle,org.tmatesoft.svnkit,1.2.3.5521,"org.tmatesoft.svnkit",1255633063068
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.edit.delete",1255633064854
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.file.save",1255633065362
+executed,command,org.eclipse.ui.ide,3.5.0.I20090525-2000,"org.eclipse.ui.project.buildAll",1255633067797
+error,log,,,"Error logged from Debug Core: ",1255633071083
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255633071802
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255633071847
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255633072248
+error,log,,,"Error logged from Debug Core: ",1255633074094
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255633074275
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255633078750
+error,log,,,"Error logged from Debug Core: ",1255633081101
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255633083671
+activated,view,org.eclipse.ui.console,3.4.0.v20090513,"org.eclipse.ui.console.ConsoleView",1255633083797
+activated,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.editor.CEditor",1255633098594
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255633114136
+error,log,,,"Error logged from Debug Core: ",1255633114473
+error,log,,,"Error logged from Debug Core: ",1255633119426

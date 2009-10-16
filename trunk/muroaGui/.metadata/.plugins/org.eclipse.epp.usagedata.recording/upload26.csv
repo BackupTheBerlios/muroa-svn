@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255270749022
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255270774410
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255270776336
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255270776853
+error,log,,,"Error logged from Debug Core: ",1255270781589
+error,log,,,"Error logged from Debug Core: ",1255270784002
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255270784007
+activated,view,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.CView",1255270793566
+opened,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.binaryEditor",1255270793994
+activated,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.binaryEditor",1255270794138
+activated,editor,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.editors.UiEditor",1255270797304
+closed,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.binaryEditor",1255270797304
+activated,view,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.CView",1255270798783
+activated,editor,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.editors.UiEditor",1255270799041
+activated,view,org.eclipse.ui.console,3.4.0.v20090513,"org.eclipse.ui.console.ConsoleView",1255270967030
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255270972262
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255270987475
+activated,view,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.views.widgetboxview",1255270999044
+activated,editor,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.editors.UiEditor",1255271007933
+activated,view,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.views.widgetboxview",1255271017198
+activated,editor,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.editors.UiEditor",1255271019909
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.file.save",1255271050516
+activated,view,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.views.widgetboxview",1255271059290
+activated,view,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.CView",1255271061733
+activated,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.editor.CEditor",1255271066853

@@ -1,0 +1,68 @@
+#include "cstatemachine.h"
+
+#include <QDebug>
+
+CStateMachine::CStateMachine()
+{
+}
+
+
+CStateMachine::~CStateMachine()
+{
+}
+
+bool CStateMachine::characters ( const QString & ch )
+{
+}
+
+bool CStateMachine::endDocument ()
+{
+}
+
+bool CStateMachine::endElement ( const QString & namespaceURI, const QString & localName, const QString & qName )
+{
+    qDebug() << QString("endElement %1").arg(qName);
+}
+
+bool CStateMachine::endPrefixMapping ( const QString & prefix )
+{
+}
+
+QString CStateMachine::errorString () const
+{
+}
+
+bool CStateMachine::ignorableWhitespace ( const QString & ch )
+{
+}
+
+bool CStateMachine::processingInstruction ( const QString & target, const QString & data )
+{
+}
+
+void CStateMachine::setDocumentLocator ( QXmlLocator * locator )
+{
+}
+
+bool CStateMachine::skippedEntity ( const QString & name )
+{
+}
+
+bool CStateMachine::startDocument()
+{
+    qDebug() << QString("startDocument");
+}
+
+bool CStateMachine::startElement ( const QString & namespaceURI, const QString & localName, const QString & qName, const QXmlAttributes & atts )
+{
+        qDebug() << QString("startElement %1 (%2 attributes)").arg(qName).arg(atts.count());
+//        for(int i=0; i < atts.count(); i++)
+//        {
+//            qDebug() << QString("Type: %1   Value: %2").arg(atts.type(i)).arg(atts.value(i));
+//        }
+
+}
+
+bool CStateMachine::startPrefixMapping ( const QString & prefix, const QString & uri )
+{
+}

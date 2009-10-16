@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.equinox.internal.provisional.p2.ui.dialogs.InstallWizard.WizardSettings">
+		<item value="725" key="DIALOG_WIDTH"/>
+		<item value="0" key="DIALOG_Y_ORIGIN"/>
+		<item value="1029" key="DIALOG_HEIGHT"/>
+		<item value="266" key="DIALOG_X_ORIGIN"/>
+		<item value="1|Sans Serif|9.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="AvailableIUsPage">
+		<item value="546" key="AvailableListSashWeight"/>
+		<item value="true" key="ResolveInstallWithAllSites"/>
+		<item value="441" key="AvailableVersionColumnWidth"/>
+		<item value="false" key="HideInstalledContent"/>
+		<item value="395" key="AvailableNameColumnWidth"/>
+		<item value="1" key="AvailableViewType"/>
+		<item value="441" key="AvailableDetailsSashWeight"/>
+		<item value="false" key="ShowLatestVersionsOnly"/>
+	</section>
+</section>

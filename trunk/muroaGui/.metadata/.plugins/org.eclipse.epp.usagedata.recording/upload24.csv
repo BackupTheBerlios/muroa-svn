@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+activated,view,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.views.widgetboxview",1255270325169
+activated,editor,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.editors.UiEditor",1255270392203
+activated,view,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.views.widgetboxview",1255270438623
+activated,editor,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.editors.UiEditor",1255270448680
+activated,view,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.views.widgetboxview",1255270459469
+activated,editor,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.editors.UiEditor",1255270466148
+activated,view,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.views.propertyeditorview",1255270475692
+activated,view,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.views.widgetboxview",1255270486200
+activated,editor,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.editors.UiEditor",1255270488008
+activated,view,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.views.widgetboxview",1255270510524
+activated,editor,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.editors.UiEditor",1255270513974
+activated,view,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.views.propertyeditorview",1255270520309
+no handler,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.edit.delete",1255270527707
+activated,view,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.views.widgetboxview",1255270538758
+activated,editor,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.editors.UiEditor",1255270540348
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.edit.undo",1255270550926
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.file.save",1255270603448
+activated,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.editor.CEditor",1255270605809
+activated,editor,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.editors.UiEditor",1255270608602
+activated,view,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.views.widgetboxview",1255270637846
+activated,editor,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.editors.UiEditor",1255270650351
+activated,view,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.views.actioneditorview",1255270656909
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255270661262
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255270665954
+opened,view,com.trolltech.qtcppdesigner,1.5.2,"com.trolltech.qtcppdesigner.views.signalsloteditorview",1255270668317

@@ -1,0 +1,38 @@
+#ifndef CSTATEMACHINE_H
+#define CSTATEMACHINE_H
+
+#include <QObject>
+
+class QTcpSocket;
+class QXmlStreamReader;
+
+class CStateMachine : public QObject
+{
+    Q_OBJECT;
+public:
+    CStateMachine();
+    ~CStateMachine();
+
+public slots:
+    void close();
+    void open();
+
+    void startDocument(QXmlStreamReader* reader);
+    void endDocument(QXmlStreamReader* reader);
+
+    void startElement(QXmlStreamReader* reader);
+    void endElement(QXmlStreamReader* reader);
+    void characters(QXmlStreamReader* reader);
+
+
+
+private:
+    int m_state;
+    int m_xml_depth;
+
+    void parseReadArgs(QXmlStreamReader* reader);
+    void parseWriteArgs(QXmlStreamReader* reader);
+
+};
+
+#endif // CSTATEMACHINE_H
