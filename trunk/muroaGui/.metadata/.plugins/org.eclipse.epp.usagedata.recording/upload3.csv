@@ -1,26 +1,26 @@
 what,kind,bundleId,bundleVersion,description,time
-started,bundle,org.eclipse.ui.views,3.4.0.I20090525-2000,"org.eclipse.ui.views",1255264865509
-started,bundle,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"org.eclipse.ui.workbench",1255264865522
-started,bundle,org.eclipse.ui.workbench.texteditor,3.5.0.v20090603,"org.eclipse.ui.workbench.texteditor",1255264865535
-started,bundle,org.eclipse.update.configurator,3.3.0.v20090312,"org.eclipse.update.configurator",1255264865547
-started,bundle,org.eclipse.update.core,3.2.300.v20090525,"org.eclipse.update.core",1255264865559
-started,bundle,org.eclipse.update.scheduler,3.2.200.v20081127,"org.eclipse.update.scheduler",1255264865560
-started,bundle,com.trolltech.qtcppproject,1.5.2,"com.trolltech.qtcppproject",1255264865560
-started,bundle,org.eclipse.jdt.core,3.5.0.v_963,"org.eclipse.jdt.core",1255264865572
-started,bundle,org.eclipse.jdt.core.manipulation,1.3.0.v20090603,"org.eclipse.jdt.core.manipulation",1255264865577
-started,bundle,org.eclipse.jdt.ui,3.5.0.v20090604,"org.eclipse.jdt.ui",1255264865593
-started,bundle,org.tigris.subversion.clientadapter,1.5.3,"org.tigris.subversion.clientadapter",1255264865593
-started,bundle,org.tigris.subversion.subclipse.core,1.4.8,"org.tigris.subversion.subclipse.core",1255264865593
-started,bundle,org.tigris.subversion.subclipse.mylyn,3.0.0,"org.tigris.subversion.subclipse.mylyn",1255264865593
-started,bundle,org.tigris.subversion.subclipse.ui,1.4.8,"org.tigris.subversion.subclipse.ui",1255264865608
-os,sysinfo,,,"linux",1255264865617
-arch,sysinfo,,,"x86_64",1255264865617
-ws,sysinfo,,,"gtk",1255264865617
-locale,sysinfo,,,"en_GB",1255264865617
-processors,sysinfo,,,"4",1255264865618
-java.runtime.name,sysinfo,,,"OpenJDK Runtime Environment",1255264865618
-java.runtime.version,sysinfo,,,"1.6.0_0-b14",1255264865618
-java.specification.name,sysinfo,,,"Java Platform API Specification",1255264865618
-java.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1255264865618
-java.specification.version,sysinfo,,,"1.6",1255264865618
-java.vendor,sysinfo,,,"Sun Microsystems Inc.",1255264865618
+executed,command,org.eclipse.ui,3.5.1.M20090902-1000,"org.eclipse.ui.file.save",1255698065025
+executed,command,org.eclipse.ui.workbench.texteditor,3.5.0.v20090603,"org.eclipse.ui.edit.text.goto.lineEnd",1255698067150
+executed,command,org.eclipse.ui,3.5.1.M20090902-1000,"org.eclipse.ui.file.save",1255698068662
+executed,command,org.eclipse.ui.ide,3.5.1.M20090826-0800,"org.eclipse.ui.project.buildAll",1255698069109
+deactivated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255698069648
+activated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255698072521
+activated,editor,org.eclipse.cdt.ui,5.1.1.200909110608,"org.eclipse.cdt.ui.editor.CEditor",1255698072809
+executed,command,org.eclipse.ui,3.5.1.M20090902-1000,"org.eclipse.ui.file.save",1255698074031
+executed,command,org.eclipse.ui.ide,3.5.1.M20090826-0800,"org.eclipse.ui.project.buildAll",1255698075297
+deactivated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255698075802
+activated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255698077058
+executed,command,org.eclipse.ui.workbench.texteditor,3.5.0.v20090603,"org.eclipse.ui.edit.text.showInformation",1255698166060
+deactivated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255698166069
+activated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255698169169
+executed,command,org.eclipse.ui,3.5.1.M20090902-1000,"org.eclipse.ui.file.save",1255698193993
+activated,editor,org.eclipse.cdt.ui,5.1.1.200909110608,"org.eclipse.cdt.ui.editor.CEditor",1255698202239
+activated,editor,org.eclipse.cdt.ui,5.1.1.200909110608,"org.eclipse.cdt.ui.editor.CEditor",1255698204718
+executed,command,org.eclipse.ui,3.5.1.M20090902-1000,"org.eclipse.ui.file.save",1255698211514
+executed,command,org.eclipse.ui.ide,3.5.1.M20090826-0800,"org.eclipse.ui.project.buildAll",1255698212407
+deactivated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255698212896
+activated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255698214310
+deactivated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255698228587
+activated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255698274007
+executed,command,org.eclipse.ui,3.5.1.M20090902-1000,"org.eclipse.ui.edit.paste",1255698277298
+executed,command,org.eclipse.ui,3.5.1.M20090902-1000,"org.eclipse.ui.file.save",1255698280779

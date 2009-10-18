@@ -1,26 +1,26 @@
 what,kind,bundleId,bundleVersion,description,time
-activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255277259675
-executed,command,org.eclipse.ui.ide,3.5.0.I20090525-2000,"org.eclipse.ui.project.buildAll",1255277260886
-deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255277261483
-activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255277262447
-deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255277275423
-error,log,,,"Error logged from Debug Core: ",1255277279891
-activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255277286515
-deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255277295962
-error,log,,,"Error logged from Debug Core: ",1255277296389
-error,log,,,"Error logged from Debug Core: ",1255277302335
-activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255277304507
-deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255277308712
-error,log,,,"Error logged from Debug Core: ",1255277310293
-activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255277310297
-deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255277315190
-error,log,,,"Error logged from Debug Core: ",1255277320198
-error,log,,,"Error logged from Debug Core: ",1255277321978
-activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255277321995
-executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.edit.cut",1255277341587
-executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.edit.delete",1255277342280
-executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.edit.paste",1255277348771
-executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.file.save",1255277351553
-executed,command,org.eclipse.ui.ide,3.5.0.I20090525-2000,"org.eclipse.ui.project.buildAll",1255277353530
-deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255277354187
-activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255277355068
+error,log,,,"Internal error logged from CDI Debug: ",1255810423645
+activated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255810518955
+error,log,,,"Internal error logged from CDI Debug: ",1255810524862
+error,log,,,"Target request failed: Target is not responding (timed out).",1255810526959
+deactivated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255810527207
+activated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255810527792
+executed,command,org.eclipse.debug.ui,3.5.1.v20090811_r351,"org.eclipse.debug.ui.commands.Terminate",1255810527814
+deactivated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255810529780
+activated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255810530005
+opened,view,org.eclipse.debug.ui,3.5.1.v20090811_r351,"org.eclipse.debug.ui.BreakpointView",1255810541449
+activated,view,org.eclipse.debug.ui,3.5.1.v20090811_r351,"org.eclipse.debug.ui.BreakpointView",1255810541461
+activated,view,org.eclipse.debug.ui,3.5.1.v20090811_r351,"org.eclipse.debug.ui.VariableView",1255810542646
+activated,view,org.eclipse.debug.ui,3.5.1.v20090811_r351,"org.eclipse.debug.ui.DebugView",1255810545555
+executed,command,org.eclipse.debug.ui,3.5.1.v20090811_r351,"org.eclipse.debug.ui.commands.Terminate",1255810549549
+deactivated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255810567569
+activated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255810606646
+activated,view,org.eclipse.ui.console,3.4.0.v20090513,"org.eclipse.ui.console.ConsoleView",1255810606879
+deactivated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255810627643
+activated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255810630075
+activated,view,org.eclipse.debug.ui,3.5.1.v20090811_r351,"org.eclipse.debug.ui.VariableView",1255810630244
+started,bundle,org.eclipse.ui.navigator.resources,3.4.1.M20090826-0800,"org.eclipse.ui.navigator.resources",1255810635835
+opened,view,org.eclipse.ui.navigator.resources,3.4.1.M20090826-0800,"org.eclipse.ui.navigator.ProjectExplorer",1255810636397
+activated,perspective,org.eclipse.cdt.ui,5.1.1.200909110608,"org.eclipse.cdt.ui.CPerspective",1255810636614
+activated,view,org.eclipse.ui.console,3.4.0.v20090513,"org.eclipse.ui.console.ConsoleView",1255810636622
+executed,command,org.eclipse.ui,3.5.1.M20090902-1000,"org.eclipse.ui.perspectives.showPerspective",1255810636901

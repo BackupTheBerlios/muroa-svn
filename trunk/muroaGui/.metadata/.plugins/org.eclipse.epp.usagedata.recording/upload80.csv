@@ -1,26 +1,26 @@
 what,kind,bundleId,bundleVersion,description,time
-started,bundle,org.eclipse.update.core,3.2.300.v20090525,"org.eclipse.update.core",1255631875040
-started,bundle,org.eclipse.mylyn.monitor.ui,3.2.0.v20090617-0100-e3x,"org.eclipse.mylyn.monitor.ui",1255631875067
-started,bundle,org.eclipse.debug.core,3.5.0.v20090526-1600,"org.eclipse.debug.core",1255631875162
-started,bundle,org.eclipse.team.cvs.ui,3.3.200.I20090521-1750,"org.eclipse.team.cvs.ui",1255631875306
-started,bundle,org.eclipse.jdt.core,3.5.0.v_963,"org.eclipse.jdt.core",1255631876024
-started,bundle,org.eclipse.jdt.core.manipulation,1.3.0.v20090603,"org.eclipse.jdt.core.manipulation",1255631876203
-started,bundle,org.eclipse.jdt.ui,3.5.0.v20090604,"org.eclipse.jdt.ui",1255631876225
-activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255632159948
-deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255632254065
-activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255632324491
-started,bundle,org.eclipse.debug.ui,3.5.0.v20090603,"org.eclipse.debug.ui",1255632327535
-started,bundle,org.eclipse.cdt.debug.core,6.0.0.200906161748,"org.eclipse.cdt.debug.core",1255632328126
-started,bundle,org.eclipse.cdt.debug.ui,6.0.0.200906161748,"org.eclipse.cdt.debug.ui",1255632328152
-started,bundle,org.eclipse.cdt.launch,6.0.0.200906161748,"org.eclipse.cdt.launch",1255632328870
-started,bundle,org.eclipse.cdt.make.core,6.0.0.200906161748,"org.eclipse.cdt.make.core",1255632329044
-started,bundle,org.eclipse.cdt.debug.mi.ui,6.0.0.200906161748,"org.eclipse.cdt.debug.mi.ui",1255632331023
-started,bundle,org.eclipse.cdt.debug.mi.core,6.0.0.200906161748,"org.eclipse.cdt.debug.mi.core",1255632331089
-deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255632331430
-activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255632337633
-activated,view,org.eclipse.ui.console,3.4.0.v20090513,"org.eclipse.ui.console.ConsoleView",1255632341079
-activated,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.editor.CEditor",1255632358251
-deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255632360656
-activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1255632438785
-activated,view,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.CView",1255632444907
-opened,editor,org.eclipse.cdt.ui,5.1.0.200906161748,"org.eclipse.cdt.ui.editor.CEditor",1255632447461
+executed,command,org.eclipse.ui,3.5.1.M20090902-1000,"org.eclipse.ui.file.save",1255871526581
+executed,command,org.eclipse.ui.ide,3.5.1.M20090826-0800,"org.eclipse.ui.project.buildAll",1255871528848
+deactivated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255871529533
+error,log,,,"Error logged from Debug Core: ",1255871532463
+activated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255871532538
+deactivated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255871533665
+activated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255871535518
+error,log,,,"Error logged from Debug Core: ",1255871535524
+deactivated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255871541169
+error,log,,,"Error logged from Debug Core: ",1255871548420
+activated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255871549882
+error,log,,,"Error logged from Debug Core: ",1255871549981
+activated,view,org.eclipse.ui.navigator.resources,3.4.1.M20090826-0800,"org.eclipse.ui.navigator.ProjectExplorer",1255871557557
+activated,editor,org.eclipse.cdt.ui,5.1.1.200909110608,"org.eclipse.cdt.ui.editor.CEditor",1255871557878
+activated,view,org.eclipse.ui.console,3.4.0.v20090513,"org.eclipse.ui.console.ConsoleView",1255871566039
+activated,editor,org.eclipse.cdt.ui,5.1.1.200909110608,"org.eclipse.cdt.ui.editor.CEditor",1255871580316
+executed,command,org.eclipse.ui,3.5.1.M20090902-1000,"org.eclipse.ui.edit.cut",1255871588325
+executed,command,org.eclipse.ui,3.5.1.M20090902-1000,"org.eclipse.ui.edit.paste",1255871592189
+executed,command,org.eclipse.ui,3.5.1.M20090902-1000,"org.eclipse.ui.edit.cut",1255871594414
+executed,command,org.eclipse.ui,3.5.1.M20090902-1000,"org.eclipse.ui.edit.cut",1255871595819
+executed,command,org.eclipse.ui,3.5.1.M20090902-1000,"org.eclipse.ui.edit.paste",1255871600956
+executed,command,org.eclipse.ui,3.5.1.M20090902-1000,"org.eclipse.ui.file.save",1255871602588
+executed,command,org.eclipse.ui.ide,3.5.1.M20090826-0800,"org.eclipse.ui.project.buildAll",1255871604600
+deactivated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255871605145
+activated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1255871605874
