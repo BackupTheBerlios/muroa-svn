@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;muroaserver/chwaccess.h&apos;" deleteContents="false" description="Delete resource &apos;muroaserver/chwaccess.h&apos;" element1="/muroaserver/chwaccess.h" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1255269280954"/>&#x0A;<refactoring comment="Delete resource &apos;muroaserver/chwaccess.cpp&apos;" deleteContents="false" description="Delete resource &apos;muroaserver/chwaccess.cpp&apos;" element1="/muroaserver/chwaccess.cpp" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1255269288114"/>
-</session>
