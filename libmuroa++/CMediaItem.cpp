@@ -16,6 +16,11 @@ using namespace std;
 CMediaItem::CMediaItem(string name, CItemBase*  parent) : CItemBase(name, parent) {
 }
 
+CMediaItem::CMediaItem(std::string text) {
+	m_text = text;
+	// parse text
+}
+
 CMediaItem::~CMediaItem() {
 }
 
@@ -64,7 +69,7 @@ void CMediaItem::rehash() {
 	m_hash = hash<string>()( ss.str() );
 	ss << "," << m_hash;
 
-	m_asString = ss.str();
+	m_text = ss.str();
 }
 
 bool CMediaItem::operator==(const CMediaItem& other) {

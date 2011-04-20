@@ -38,11 +38,14 @@ public:
 	inline CItemBase* getParent() { return m_parent; };
 	virtual void addChild(CItemBase* newChild) = 0;
 
+	inline std::string getText() { return m_text; };
 protected:
 	std::string m_name;
 	std::string m_path;
 
 	CItemBase*  m_parent;
+
+	std::string m_text;
 };
 
 #endif /* CITEMBASE_H_ */

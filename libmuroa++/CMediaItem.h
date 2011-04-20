@@ -15,6 +15,7 @@
 class CMediaItem : public CItemBase {
 public:
 	CMediaItem(std::string name, CItemBase*  parent);
+	CMediaItem(std::string text);
 	virtual ~CMediaItem();
 
     inline std::string getAlbum() const { return m_album; }
@@ -49,7 +50,6 @@ private:
 
 	unsigned m_hash;
 
-    std::string m_asString;
 	void rehash();
 };
 
