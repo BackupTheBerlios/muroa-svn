@@ -22,20 +22,36 @@
  ***************************************************************************/
 
 #include "CItemBase.h"
+#include <boost/algorithm/string.hpp>
 
 using namespace std;
+using namespace boost;
 
 CItemBase::CItemBase(std::string name, CItemBase*  parent) : m_name(name), m_parent(parent) {
+	replaceTabs(m_name);
 	if(m_parent) {
 		m_path = m_parent->getPath();
+		m_path.append("/");
 	}
-	m_path.append("/");
 	m_path.append(m_name);
 	if(m_parent) {
 		m_parent->addChild(this);
 	}
 }
 
+CItemBase::CItemBase(std::string text) {
+	int pos = text.find('\t', 0);
+	m_path = text.substr(0, pos);
+}
+
+
 CItemBase::~CItemBase() {
+	// traversing the tree for cleanup is done in CCategoryItem as CMediaItem may not have any children.
+}
+
+
+void CItemBase::replaceTabs(string& str) {
+	std::replace( str.begin(), str.end(), '\t', ' ' );
+	trim(str);
 }
 

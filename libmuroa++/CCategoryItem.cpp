@@ -29,6 +29,11 @@ CCategoryItem::CCategoryItem(string name, CItemBase*  parent) : CItemBase(name, 
 
 }
 
+CCategoryItem::CCategoryItem(string text): CItemBase(text) {
+
+}
+
+
 CCategoryItem::~CCategoryItem() {
 	std::vector<CItemBase*>::iterator it;
 	for(it = m_children.begin(); it != m_children.end(); it++ ) {
@@ -39,4 +44,44 @@ CCategoryItem::~CCategoryItem() {
 void CCategoryItem::addChild(CItemBase* newChild) {
 	m_children.push_back(newChild);
 }
+
+string CCategoryItem::serialize() {
+	string result;
+
+	std::vector<CItemBase*>::iterator it;
+	for(it = m_children.begin(); it != m_children.end(); it++ ) {
+		result.append((*it)->serialize());
+	}
+
+	return result;
+}
+
+bool CCategoryItem::operator==(const CCategoryItem& other) {
+
+	if(m_path != other.m_path) {
+		return false;
+	}
+
+	if(m_name != other.m_name) {
+		return false;
+	}
+
+	if( m_children.size() != other.m_children.size() ) {
+		return false;
+	}
+
+	vector<CItemBase*>::const_iterator it = m_children.begin();
+	vector<CItemBase*>::const_iterator other_it = other.m_children.begin();
+
+	while( it != m_children.end() && other_it != other.m_children.end()) {
+		if( (*it) != (*other_it)) {
+			return false;
+		}
+		it++;
+		other_it++;
+	}
+
+	return true;
+}
+
 

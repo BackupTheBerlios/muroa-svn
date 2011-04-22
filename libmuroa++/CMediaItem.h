@@ -38,6 +38,7 @@ public:
 	bool operator==(const CMediaItem& other);
 
 	void addChild(CItemBase* newChild);
+	std::string serialize();
 
 private:
 

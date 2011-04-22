@@ -31,9 +31,13 @@
 class CCategoryItem : public CItemBase {
 public:
 	CCategoryItem(std::string name, CItemBase*  parent);
+	CCategoryItem(std::string text);
 	virtual ~CCategoryItem();
 
 	void addChild(CItemBase* newChild);
+	std::string serialize();
+
+	bool operator==(const CCategoryItem& other);
 private:
 	std::vector<CItemBase*>  m_children;
 

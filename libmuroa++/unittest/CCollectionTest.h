@@ -31,7 +31,10 @@ class CCategoryItem;
 
 class CCollectionTest: public CppUnit::TestFixture {
 	  CPPUNIT_TEST_SUITE( CCollectionTest );
+	  CPPUNIT_TEST( replaceTabs );
 	  CPPUNIT_TEST( construct );
+	  CPPUNIT_TEST( serializeMedia );
+	  CPPUNIT_TEST( serializeCategory );
 	  CPPUNIT_TEST( traverse );
 	  CPPUNIT_TEST( serialize );
 	  CPPUNIT_TEST( deserialize );
@@ -44,13 +47,18 @@ public:
 	void setUp();
     void tearDown();
 
+    void replaceTabs();
 	void construct();
 	void traverse();
+	void serializeMedia();
+	void serializeCategory();
 	void serialize();
     void deserialize();
 
 private:
     CCategoryItem* m_base;
+
+    CCategoryItem* prepareFakeCollection(CCategoryItem* base, int numArtist, int numAlbum, int numTitle);
 
 };
 

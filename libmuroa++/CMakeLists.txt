@@ -5,6 +5,9 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
 add_subdirectory(unittest)
 
+set(Boost_USE_MULTITHREADED ON)
+find_package( Boost 1.36.0 COMPONENTS system REQUIRED )
+
 
 add_definitions(  )
 
@@ -21,12 +24,12 @@ set( HEADERS       CItemBase.h
                    CCategoryItem.h
                    )
                    
-include_directories(${CMAKE_SOURCE_DIR})
+include_directories(${CMAKE_SOURCE_DIR} ${Boost_INCLUDE_DIRS})
 
 link_directories(  )
 
 add_library( muroa++ SHARED ${SRC} ${HEADERS} )
-target_link_libraries( muroa++     )
+target_link_libraries( muroa++  ${Boost_LIBRARIES} )
 set_target_properties( muroa++  PROPERTIES  COMPILE_FLAGS "-std=gnu++0x" ) 
 
 install(TARGETS   muroa++ DESTINATION  lib)

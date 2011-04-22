@@ -32,6 +32,10 @@ public:
 	CItemBase(std::string name, CItemBase*  parent);
 	virtual ~CItemBase();
 
+protected:
+	CItemBase(std::string text);
+
+public:
 	inline std::string getName() { return m_name; };
 	inline std::string getPath() { return m_path; };
 
@@ -39,6 +43,9 @@ public:
 	virtual void addChild(CItemBase* newChild) = 0;
 
 	inline std::string getText() { return m_text; };
+
+	virtual std::string serialize() = 0;
+
 protected:
 	std::string m_name;
 	std::string m_path;
@@ -46,6 +53,7 @@ protected:
 	CItemBase*  m_parent;
 
 	std::string m_text;
+	void replaceTabs(std::string& str);
 };
 
 #endif /* CITEMBASE_H_ */
