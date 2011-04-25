@@ -25,12 +25,12 @@
 
 using namespace std;
 
-CCategoryItem::CCategoryItem(string name, CItemBase*  parent) : CItemBase(name, parent) {
-
-}
-
-CCategoryItem::CCategoryItem(string text): CItemBase(text) {
-
+CCategoryItem::CCategoryItem(string text, CItemBase*  parent) :
+               CItemBase(text, parent, false)
+{
+	if(parent == 0) {
+		m_path.insert(0, "c");
+	}
 }
 
 
@@ -47,7 +47,8 @@ void CCategoryItem::addChild(CItemBase* newChild) {
 
 string CCategoryItem::serialize() {
 	string result;
-
+	result.append(m_path);
+	result.append("\n");
 	std::vector<CItemBase*>::iterator it;
 	for(it = m_children.begin(); it != m_children.end(); it++ ) {
 		result.append((*it)->serialize());
@@ -84,4 +85,13 @@ bool CCategoryItem::operator==(const CCategoryItem& other) {
 	return true;
 }
 
+string CCategoryItem::getParentPath(string ownPath) {
+	size_t rpos = ownPath.rfind('\t', 0);
+	if(rpos == string::npos ) {
+		return "";
+	}
+	else {
+		return ownPath.substr(0, rpos);
+	}
+}
 

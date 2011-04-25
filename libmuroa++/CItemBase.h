@@ -29,11 +29,11 @@
 
 class CItemBase {
 public:
-	CItemBase(std::string name, CItemBase*  parent);
+	CItemBase(std::string name, CItemBase*  parent, bool deserialize);
 	virtual ~CItemBase();
 
 protected:
-	CItemBase(std::string text);
+	CItemBase(std::string text );
 
 public:
 	inline std::string getName() { return m_name; };
@@ -54,6 +54,7 @@ protected:
 
 	std::string m_text;
 	void replaceTabs(std::string& str);
+
 };
 
 #endif /* CITEMBASE_H_ */

@@ -27,20 +27,25 @@
 #include "CItemBase.h"
 
 #include <string>
+#include <sstream>
+
 
 class CCategoryItem : public CItemBase {
 public:
-	CCategoryItem(std::string name, CItemBase*  parent);
-	CCategoryItem(std::string text);
+	CCategoryItem(std::string text = std::string(), CItemBase*  parent = 0);
 	virtual ~CCategoryItem();
 
 	void addChild(CItemBase* newChild);
 	std::string serialize();
 
 	bool operator==(const CCategoryItem& other);
+
+	static std::string getParentPath(std::string ownPath);
 private:
 	std::vector<CItemBase*>  m_children;
+	std::istringstream m_iss;
 
+	int m_depth;
 };
 
 #endif /* CCATEGORYITEM_H_ */

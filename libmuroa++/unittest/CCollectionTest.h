@@ -28,6 +28,7 @@
 #include <cppunit/TestFixture.h>
 
 class CCategoryItem;
+class CRootItem;
 
 class CCollectionTest: public CppUnit::TestFixture {
 	  CPPUNIT_TEST_SUITE( CCollectionTest );
@@ -56,9 +57,9 @@ public:
     void deserialize();
 
 private:
-    CCategoryItem* m_base;
+    CRootItem* m_root;
 
-    CCategoryItem* prepareFakeCollection(CCategoryItem* base, int numArtist, int numAlbum, int numTitle);
+    CRootItem* prepareFakeCollection(int numArtist, int numAlbum, int numTitle);
 
 };
 

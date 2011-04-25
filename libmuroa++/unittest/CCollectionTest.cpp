@@ -24,6 +24,7 @@
 #include "CCollectionTest.h"
 #include "CCategoryItem.h"
 #include "CMediaItem.h"
+#include "CRootItem.h"
 
 #include <cmath>
 
@@ -44,11 +45,11 @@ CCollectionTest::~CCollectionTest() {
 }
 
 void CCollectionTest::setUp() {
-	m_base = new CCategoryItem("", 0);
+	m_root = new CRootItem();
 }
 
 void CCollectionTest::tearDown() {
-	delete m_base;
+	delete m_root;
 }
 
 
@@ -56,16 +57,17 @@ void CCollectionTest::construct() {
 	cerr << "CCollectionTest::construct()" << endl;
 	CCategoryItem *item;
 
-	item = new CCategoryItem("stufe1", m_base);
-	item = new CCategoryItem("stufe2", item);
-	item = new CCategoryItem("stufe3", item);
 
-	CMediaItem *mItem = new CMediaItem("Titel1", item);
+	item = m_root->addCategory("stufe1");
+	item = m_root->addCategory("stufe2", item);
+	item = m_root->addCategory("stufe3", item);
+
+	CMediaItem *mItem = m_root->addMediaItem("Titel1", item);
 }
 
 void CCollectionTest::serializeMedia() {
-	CMediaItem *mItem = new CMediaItem("Titel1", m_base);
-	string result = m_base->serialize();
+	CMediaItem *mItem = new CMediaItem("Titel1", 0);
+	string result = mItem->serialize();
 
 	stringstream ss;
 	ss << mItem->getText();
@@ -74,9 +76,10 @@ void CCollectionTest::serializeMedia() {
 }
 
 void CCollectionTest::serializeCategory() {
-	CCategoryItem *cItem = new CCategoryItem("Category1", m_base);
+	CCategoryItem* base = new CCategoryItem();
+	CCategoryItem *cItem = new CCategoryItem("Category1", base);
 	CMediaItem *mItem = new CMediaItem("Titel1", cItem);
-	string result = m_base->serialize();
+	string result = base->serialize();
 
 	stringstream ss;
 	ss << mItem->getText();
@@ -87,14 +90,15 @@ void CCollectionTest::serializeCategory() {
 
 void CCollectionTest::serialize() {
 	CCategoryItem *item;
+	CCategoryItem* base = new CCategoryItem();
 
-	item = new CCategoryItem("stufe1", m_base);
+	item = new CCategoryItem("stufe1", base);
 	item = new CCategoryItem("stufe2", item);
 	item = new CCategoryItem("stufe3", item);
 
 	CMediaItem *mItem = new CMediaItem("Titel1", item);
 
-	string result = m_base->serialize();
+	string result = base->serialize();
 
 	stringstream ss;
 	ss << mItem->getText();
@@ -103,15 +107,17 @@ void CCollectionTest::serialize() {
 }
 
 void CCollectionTest::deserialize() {
-	prepareFakeCollection(m_base, 10, 10, 10);
+	CRootItem* rItem = prepareFakeCollection(10, 10, 10);
 
-	string serialisation = m_base->serialize();
+	string serialisation = rItem->serialize();
 
 	cerr << serialisation << endl << endl;
 
-	CCategoryItem* newBase = new CCategoryItem( serialisation );
+	CRootItem* newRoot = new CRootItem( );
+	newRoot->deserialize(serialisation);
+	//CCategoryItem* newBase = new CCategoryItem( serialisation );
 
-	CPPUNIT_ASSERT( (*newBase) == (*m_base) );
+	CPPUNIT_ASSERT( (*newRoot) == (*rItem) );
 }
 
 
@@ -141,22 +147,24 @@ void CCollectionTest::replaceTabs() {
 
 
 
-CCategoryItem* CCollectionTest::prepareFakeCollection(CCategoryItem* base, int numArtist, int numAlbum, int numTitle) {
+CRootItem* CCollectionTest::prepareFakeCollection(int numArtist, int numAlbum, int numTitle) {
+
+	CRootItem* rItem = new CRootItem();
 
 	for(int i=0; i < numArtist; i++) {
 		stringstream artist_ss;
 		artist_ss << "Test Artist " << setw( floor(log10(numArtist)) ) << i;
-		CCategoryItem* artist = new CCategoryItem(artist_ss.str(), base);
+		CCategoryItem* artist = rItem->addCategory(artist_ss.str());
 
 		for(int j=0; j < numAlbum; j++) {
 			stringstream album_ss;
 			album_ss << "Test Album " << setw( floor(log10(numAlbum)) ) << j;
-			CCategoryItem* album = new CCategoryItem(album_ss.str(), artist);
+			CCategoryItem* album = rItem->addCategory(album_ss.str(), artist);
 
 			for(int k=0; k < numArtist; k++) {
 				stringstream title_ss;
 				title_ss << "Test Title " << setw( floor(log10(numTitle)) ) << k;
-				CMediaItem* title = new CMediaItem(title_ss.str(), album);
+				CMediaItem* title = rItem->addMediaItem(title_ss.str(), album);
 				title->setFilename("/path/to/file.mp3");
 				title->setArtist(artist_ss.str());
 				title->setAlbum(album_ss.str());
@@ -168,7 +176,7 @@ CCategoryItem* CCollectionTest::prepareFakeCollection(CCategoryItem* base, int n
 		}
 	}
 
-	return base;
+	return rItem;
 }
 
 

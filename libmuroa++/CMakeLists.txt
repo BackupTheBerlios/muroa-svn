@@ -12,14 +12,16 @@ find_package( Boost 1.36.0 COMPONENTS system REQUIRED )
 add_definitions(  )
 
 
-set( SRC           CItemBase.cpp
+set( SRC           CRootItem.cpp
+                   CItemBase.cpp
                    CMediaItem.cpp
                    CCategoryItem.cpp
                    libmain.cpp 
                    )
                   
 
-set( HEADERS       CItemBase.h
+set( HEADERS       CRootItem.h
+                   CItemBase.h
                    CMediaItem.h
                    CCategoryItem.h
                    )
