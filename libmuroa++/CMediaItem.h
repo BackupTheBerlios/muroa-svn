@@ -14,7 +14,8 @@
 
 class CMediaItem : public CItemBase {
 public:
-	CMediaItem(std::string text, CItemBase*  parent, bool deserialize = false);
+	CMediaItem(CItemBase*  parent);
+	CMediaItem(std::string text, CItemBase*  parent);
 	virtual ~CMediaItem();
 
     inline std::string getAlbum() const { return m_album; }

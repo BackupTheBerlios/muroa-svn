@@ -29,7 +29,10 @@ public:
 	}
 
 	CCategoryItem* addCategory(std::string name, CCategoryItem* parent = 0);
-	CMediaItem* addMediaItem(std::string name, CCategoryItem* parent = 0);
+
+	CMediaItem* addMediaItem(CCategoryItem* parent = 0);
+	CMediaItem* addMediaItem(std::string textWoPath, CCategoryItem* parent);
+	CMediaItem* addMediaItem(std::string text);
 
 	std::string serialize();
 	void deserialize(std::string text);
@@ -39,7 +42,9 @@ public:
 
 private:
 	std::map<std::string, CItemBase*> m_map;
-	CItemBase* m_base;
+	CCategoryItem* m_base;
+
+	CCategoryItem* mkPath(std::string path);
 };
 
 #endif /* CROOTITEM_H_ */

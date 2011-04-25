@@ -126,13 +126,13 @@ void CCollectionTest::traverse() {
 }
 
 void CCollectionTest::replaceTabs() {
-	CMediaItem *mItem = new CMediaItem("Tit\tel1", 0);
+	CMediaItem *mItem = new CMediaItem(0);
 	mItem->setArtist("Tabula\tRasa\t");
 	mItem->setAlbum("On The \t way to \tabs");
 	mItem->setTitle("\tTab\tTab\t");
 
 	string name = mItem->getName();
-	CPPUNIT_ASSERT( name.compare("Tit el1") == 0 );
+	CPPUNIT_ASSERT( name.compare("") == 0 );
 
 	string artist = mItem->getArtist();
 	CPPUNIT_ASSERT( artist.compare("Tabula Rasa") == 0 );

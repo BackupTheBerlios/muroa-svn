@@ -27,30 +27,16 @@
 using namespace std;
 using namespace boost;
 
-CItemBase::CItemBase(std::string text, CItemBase*  parent, bool deserialize) :
+CItemBase::CItemBase(CItemBase*  parent) :
            m_parent(parent)
 {
-	if(deserialize) {
-		int pos = text.find('\t', 0);
-		m_name = text.substr(0, pos);
-	}
-	else {
-		m_name = text;
-		replaceTabs(m_name);
-	}
-	if(m_parent) {
-		m_path = m_parent->getPath();
-		m_path.append("\t");
-	}
-	m_path.append(m_name);
-	if(m_parent) {
-		m_parent->addChild(this);
-	}
 }
 
 CItemBase::CItemBase(std::string text ) {
-	int pos = text.find('\t', 0);
-	m_path = text.substr(0, pos);
+	int tabpos = text.find('\t', 0);
+	int namepos = text.rfind('/', tabpos);
+
+	m_name = text.substr(namepos, tabpos);
 }
 
 

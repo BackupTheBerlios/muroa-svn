@@ -26,10 +26,18 @@
 using namespace std;
 
 CCategoryItem::CCategoryItem(string text, CItemBase*  parent) :
-               CItemBase(text, parent, false)
+               CItemBase(parent)
 {
-	if(parent == 0) {
-		m_path.insert(0, "c");
+	replaceTabs(text);
+	m_name = text;
+
+	if(m_parent) {
+		m_path = m_parent->getPath();
+		m_path.append("/");
+	}
+	m_path.append(m_name);
+	if(m_parent) {
+		m_parent->addChild(this);
 	}
 }
 
@@ -47,8 +55,8 @@ void CCategoryItem::addChild(CItemBase* newChild) {
 
 string CCategoryItem::serialize() {
 	string result;
-	result.append(m_path);
-	result.append("\n");
+	// result.append(m_path);
+	// result.append("\n");
 	std::vector<CItemBase*>::iterator it;
 	for(it = m_children.begin(); it != m_children.end(); it++ ) {
 		result.append((*it)->serialize());

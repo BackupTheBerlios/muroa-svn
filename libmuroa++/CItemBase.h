@@ -29,7 +29,7 @@
 
 class CItemBase {
 public:
-	CItemBase(std::string name, CItemBase*  parent, bool deserialize);
+	CItemBase(CItemBase*  parent);
 	virtual ~CItemBase();
 
 protected:

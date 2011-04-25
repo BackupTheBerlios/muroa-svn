@@ -17,47 +17,50 @@
 using namespace std;
 
 
-CMediaItem::CMediaItem(std::string text, CItemBase*  parent, bool deserialize)
-   : CItemBase(text, parent, deserialize) {
+CMediaItem::CMediaItem(CItemBase*  parent) : CItemBase( parent ) {
+}
 
-	if(deserialize) {
-		// first section is handled by CItemBase
-		size_t lpos, rpos;
+CMediaItem::CMediaItem(std::string text, CItemBase*  parent)
+   : CItemBase( parent ) {
 
-		lpos = m_path.size() + 1;
+	// first section is handled by CItemBase
+	size_t lpos, rpos;
 
-		rpos = m_text.find('\t', lpos);
-		m_filename = text.substr(lpos, rpos);
-		lpos = rpos + 1;
+	lpos = m_path.size() + 1;
 
-		rpos = m_text.find('\t', lpos);
-		m_artist = text.substr(lpos, rpos);
-		lpos = rpos + 1;
+	rpos = m_text.find('\t', lpos);
+	m_filename = text.substr(lpos, rpos);
+	lpos = rpos + 1;
 
-		rpos = m_text.find('\t', lpos);
-		m_album = text.substr(lpos, rpos);
-		lpos = rpos + 1;
+	rpos = m_text.find('\t', lpos);
+	m_artist = text.substr(lpos, rpos);
+	lpos = rpos + 1;
 
-		rpos = m_text.find('\t', lpos);
-		m_title = text.substr(lpos, rpos);
-		lpos = rpos + 1;
+	rpos = m_text.find('\t', lpos);
+	m_album = text.substr(lpos, rpos);
+	lpos = rpos + 1;
 
-		rpos = m_text.find('\t', lpos);
-		string yearStr = text.substr(lpos, rpos);
-		m_year = strtol(yearStr.c_str(), NULL, 10);
-		lpos = rpos + 1;
+	rpos = m_text.find('\t', lpos);
+	m_title = text.substr(lpos, rpos);
+	lpos = rpos + 1;
 
-		rpos = m_text.find('\t', lpos);
-		string durationStr = text.substr(lpos, rpos);
-		m_duration_in_s = strtol(durationStr.c_str(), NULL, 10);
-		lpos = rpos + 1;
+	rpos = m_text.find('\t', lpos);
+	string yearStr = text.substr(lpos, rpos);
+	m_year = strtol(yearStr.c_str(), NULL, 10);
+	lpos = rpos + 1;
 
-		string hashStr = text.substr(lpos);
-		m_hash = strtol(hashStr.c_str(), NULL, 10);
+	rpos = m_text.find('\t', lpos);
+	string durationStr = text.substr(lpos, rpos);
+	m_duration_in_s = strtol(durationStr.c_str(), NULL, 10);
+	lpos = rpos + 1;
+
+	string hashStr = text.substr(lpos);
+	m_hash = strtol(hashStr.c_str(), NULL, 10);
+
+	if(m_parent) {
+		m_parent->addChild(this);
 	}
-	else {
 
-	}
 }
 
 CMediaItem::~CMediaItem() {
@@ -107,8 +110,11 @@ void CMediaItem::setYear(int year)
 void CMediaItem::rehash() {
 	stringstream ss;
 
-	//ss << m_path << "\t" << m_filename << "\t" << m_artist << "\t" << m_album << "\t" << m_title << "\t" << m_year << "\t" << m_duration_in_s;
-	ss << "m\t" <<  m_filename << "\t" << m_artist << "\t" << m_album << "\t" << m_title << "\t" << m_year << "\t" << m_duration_in_s;
+	if( m_parent ) {
+		ss << m_parent->getPath();
+	}
+	ss << "\t" << m_filename << "\t" << m_artist << "\t" << m_album << "\t" << m_title << "\t" << m_year << "\t" << m_duration_in_s;
+	//ss << "m\t" <<  m_filename << "\t" << m_artist << "\t" << m_album << "\t" << m_title << "\t" << m_year << "\t" << m_duration_in_s;
 
 	m_hash = hash<string>()( ss.str() );
 	ss << "\t" << m_hash << endl;
