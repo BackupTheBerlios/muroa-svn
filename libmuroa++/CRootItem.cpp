@@ -56,6 +56,9 @@ CMediaItem* CRootItem::addMediaItem(string textWoPath, CCategoryItem* parent) {
 CMediaItem* CRootItem::addMediaItem(string text) {
 
 	size_t pathPos = text.find('\t');
+	if(pathPos == string::npos) {
+		return 0;
+	}
 	string path = text.substr(0, pathPos);
 
 	CItemBase* parent = getItemPtr(path);
@@ -128,7 +131,7 @@ std::string CRootItem::serialize() {
 }
 
 bool CRootItem::operator==(const CRootItem& other) {
-	return (m_base == other.m_base);
+	return (*m_base == *(other.m_base));
 }
 
 
@@ -139,8 +142,14 @@ CCategoryItem* CRootItem::mkPath(string path) {
 	while( lpos < path.size() ) {
 		size_t rpos = path.find('/', lpos);
 		if(rpos == string::npos) {
-			break;
+			if( lpos != path.size() ) {
+				rpos = path.size();
+			}
+			else {
+				break;
+			}
 		}
+
 
 		string catPath = path.substr(0, rpos);
 		string catName = path.substr(lpos , rpos - lpos);
@@ -148,6 +157,7 @@ CCategoryItem* CRootItem::mkPath(string path) {
 		CItemBase* cItem = getItemPtr(catPath);
 		if(cItem == 0) {
 			cItem = new CCategoryItem( catName, parent);
+			setItemPtr(catPath, cItem);
 		}
 		parent = cItem;
 		lpos = rpos + 1;

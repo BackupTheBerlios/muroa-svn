@@ -10,6 +10,7 @@
 
 #include <string>
 #include <map>
+#include <iostream>
 
 class CItemBase;
 class CCategoryItem;
@@ -21,11 +22,24 @@ public:
 	virtual ~CRootItem();
 
 	CItemBase* getItemPtr(std::string path) {
-		return m_map[path];
-	}
+    	std::map<std::string, CItemBase*>::iterator it;
+    	it = m_map.find(path);
+    	if(it == m_map.end()) {
+    		return 0;
+    	}
+    	else {
+    		return it->second;
+    	}
+   	}
 
 	inline void setItemPtr(std::string path, CItemBase* itemPtr) {
-		m_map.insert(std::make_pair(path, itemPtr));
+		std::pair<std::map<std::string, CItemBase*>::iterator,bool> ret;
+		ret = m_map.insert(std::pair<std::string,CItemBase*>(path, itemPtr));
+		if (ret.second==false)
+		{
+		    std::cout << "element 'z' already existed";
+		    std::cout << " with a value of " << ret.first->second << std::endl;
+		}
 	}
 
 	CCategoryItem* addCategory(std::string name, CCategoryItem* parent = 0);

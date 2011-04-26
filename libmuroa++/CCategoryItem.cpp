@@ -22,6 +22,8 @@
  ***************************************************************************/
 
 #include "CCategoryItem.h"
+#include <typeinfo>
+#include <iostream>
 
 using namespace std;
 
@@ -83,7 +85,14 @@ bool CCategoryItem::operator==(const CCategoryItem& other) {
 	vector<CItemBase*>::const_iterator other_it = other.m_children.begin();
 
 	while( it != m_children.end() && other_it != other.m_children.end()) {
-		if( (*it) != (*other_it)) {
+		string type_it = typeid(*it).name();
+		string type_other_it = typeid(*other_it).name();
+
+		if(type_it.compare(typeid(CCategoryItem*).name()) == 0) {
+			cerr << "type is CCategoryItem*" << endl;
+		}
+
+		if((*it)->getText().compare((*other_it)->getText()) != 0) {
 			return false;
 		}
 		it++;
