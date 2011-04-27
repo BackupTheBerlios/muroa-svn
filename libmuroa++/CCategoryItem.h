@@ -39,6 +39,7 @@ public:
 	std::string serialize();
 
 	bool operator==(const CCategoryItem& other);
+	inline bool operator!=(const CCategoryItem& other) { return !operator==(other);}
 
 	static std::string getParentPath(std::string ownPath);
 private:

@@ -66,8 +66,8 @@ CMediaItem* CRootItem::addMediaItem(string text) {
 		parent = mkPath(path);
 	}
 
-
-	CMediaItem* newItem = new CMediaItem(text, parent);
+	string mItemText = text.substr(pathPos, text.size() - pathPos);
+	CMediaItem* newItem = new CMediaItem(mItemText, parent);
 	return newItem;
 }
 

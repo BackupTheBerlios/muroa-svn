@@ -62,11 +62,11 @@ void CCollectionTest::construct() {
 	item = m_root->addCategory("stufe2", item);
 	item = m_root->addCategory("stufe3", item);
 
-	CMediaItem *mItem = m_root->addMediaItem("Titel1", item);
+	CMediaItem *mItem = m_root->addMediaItem("/path/to/file.mp3\tTest Artist 0\tTest Album 0	Test Title 9\t2008\t90\t3560093084", item);
 }
 
 void CCollectionTest::serializeMedia() {
-	CMediaItem *mItem = new CMediaItem("Titel1", 0);
+	CMediaItem *mItem = new CMediaItem("/path/to/file.mp3\tTest Artist 0\tTest Album 0	Test Title 9\t2008\t90\t3560093084", 0);
 	string result = mItem->serialize();
 
 	stringstream ss;
@@ -115,8 +115,11 @@ void CCollectionTest::deserialize() {
 
 	CRootItem* newRoot = new CRootItem( );
 	newRoot->deserialize(serialisation);
-	//CCategoryItem* newBase = new CCategoryItem( serialisation );
 
+	string newserialisation = newRoot->serialize();
+	cerr << newserialisation << endl << endl;
+
+	CPPUNIT_ASSERT( newserialisation.compare(serialisation) == 0 );
 	CPPUNIT_ASSERT( (*newRoot) == (*rItem) );
 }
 

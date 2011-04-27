@@ -22,8 +22,10 @@
  ***************************************************************************/
 
 #include "CCategoryItem.h"
+#include "CMediaItem.h"
 #include <typeinfo>
 #include <iostream>
+#include <cassert>
 
 using namespace std;
 
@@ -88,8 +90,18 @@ bool CCategoryItem::operator==(const CCategoryItem& other) {
 		string type_it = typeid(*it).name();
 		string type_other_it = typeid(*other_it).name();
 
-		if(type_it.compare(typeid(CCategoryItem*).name()) == 0) {
-			cerr << "type is CCategoryItem*" << endl;
+		CCategoryItem* cItemLhs = dynamic_cast<CCategoryItem*>(*it);
+		CCategoryItem* cItemRhs = dynamic_cast<CCategoryItem*>(*other_it);
+		if(cItemLhs == 0 || cItemRhs == 0) {
+			CMediaItem* mItemLhs = dynamic_cast<CMediaItem*>(*it);
+			CMediaItem* mItemRhs = dynamic_cast<CMediaItem*>(*other_it);
+			assert( mItemLhs != 0 && mItemRhs != 0);
+			return (*mItemLhs == *mItemRhs );
+		}
+		else {
+			if( (*cItemLhs) != (*cItemRhs) ) {
+				return false;
+			}
 		}
 
 		if((*it)->getText().compare((*other_it)->getText()) != 0) {

@@ -23,34 +23,35 @@ CMediaItem::CMediaItem(CItemBase*  parent) : CItemBase( parent ) {
 CMediaItem::CMediaItem(std::string text, CItemBase*  parent)
    : CItemBase( parent ) {
 
+	m_text = text;
 	// first section is handled by CItemBase
 	size_t lpos, rpos;
-
-	lpos = m_path.size() + 1;
+	// lpos = m_text.find('\t', 1) + 1;
+	lpos = 1;
 
 	rpos = m_text.find('\t', lpos);
-	m_filename = text.substr(lpos, rpos);
+	m_filename = text.substr(lpos, rpos - lpos);
 	lpos = rpos + 1;
 
 	rpos = m_text.find('\t', lpos);
-	m_artist = text.substr(lpos, rpos);
+	m_artist = text.substr(lpos, rpos - lpos);
 	lpos = rpos + 1;
 
 	rpos = m_text.find('\t', lpos);
-	m_album = text.substr(lpos, rpos);
+	m_album = text.substr(lpos, rpos - lpos);
 	lpos = rpos + 1;
 
 	rpos = m_text.find('\t', lpos);
-	m_title = text.substr(lpos, rpos);
+	m_title = text.substr(lpos, rpos - lpos);
 	lpos = rpos + 1;
 
 	rpos = m_text.find('\t', lpos);
-	string yearStr = text.substr(lpos, rpos);
+	string yearStr = text.substr(lpos, rpos - lpos);
 	m_year = strtol(yearStr.c_str(), NULL, 10);
 	lpos = rpos + 1;
 
 	rpos = m_text.find('\t', lpos);
-	string durationStr = text.substr(lpos, rpos);
+	string durationStr = text.substr(lpos, rpos - lpos);
 	m_duration_in_s = strtol(durationStr.c_str(), NULL, 10);
 	lpos = rpos + 1;
 
@@ -60,7 +61,7 @@ CMediaItem::CMediaItem(std::string text, CItemBase*  parent)
 	if(m_parent) {
 		m_parent->addChild(this);
 	}
-
+	rehash();
 }
 
 CMediaItem::~CMediaItem() {
