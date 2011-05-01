@@ -16,6 +16,7 @@ set( SRC           CRootItem.cpp
                    CItemBase.cpp
                    CMediaItem.cpp
                    CCategoryItem.cpp
+                   CDiff.cpp
                    libmain.cpp 
                    )
                   
@@ -24,6 +25,7 @@ set( HEADERS       CRootItem.h
                    CItemBase.h
                    CMediaItem.h
                    CCategoryItem.h
+                   CDiff.h
                    )
                    
 include_directories(${CMAKE_SOURCE_DIR} ${Boost_INCLUDE_DIRS})
