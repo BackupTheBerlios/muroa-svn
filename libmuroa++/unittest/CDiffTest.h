@@ -27,6 +27,10 @@
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/TestFixture.h>
 
+#include "CDiff.h"
+
+#include <string>
+
 class CCategoryItem;
 class CRootItem;
 
@@ -48,7 +52,9 @@ public:
 
 private:
 	CRootItem* m_rootItem;
+	std::string file2string(const std::string &fileName);
 
+	CDiff m_diff;
 };
 
 #endif /* CDIFFTEST_H_ */

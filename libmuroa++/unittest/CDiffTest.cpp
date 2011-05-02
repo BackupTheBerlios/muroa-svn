@@ -24,6 +24,8 @@
 #include "CDiffTest.h"
 #include "CRootItem.h"
 
+#include <sstream>
+
 using namespace std;
 
 CPPUNIT_TEST_SUITE_REGISTRATION( CDiffTest );
@@ -45,10 +47,35 @@ void CDiffTest::tearDown() {
 }
 
 void CDiffTest::diff() {
+	string orig = file2string( "unittest/testcases/origcollection.txt" );
+	string modified = file2string( "unittest/testcases/modcollection.txt" );
 
+	string difference = m_diff.diff(orig, modified);
+	cerr << "###" << difference << "###" << endl;
+
+	string expected_diff = file2string( "unittest/testcases/diff.txt" );
+
+	CPPUNIT_ASSERT(expected_diff.compare(difference) == 0);
 }
 
 void CDiffTest::patch() {
 
 }
 
+string CDiffTest::file2string(const string &fileName)
+{
+    ifstream ifs(fileName.c_str(), ios::in | ios::binary | ios::ate);
+
+    if(ifs.is_open()) {
+    	ifstream::pos_type fileSize = ifs.tellg();
+    	ifs.seekg(0, ios::beg);
+
+    	vector<char> bytes(fileSize);
+    	ifs.read(&bytes[0], fileSize);
+
+    	return string(&bytes[0], fileSize);
+    }
+    else {
+    	cerr << "could not open file " << fileName << endl;
+   	}
+}
