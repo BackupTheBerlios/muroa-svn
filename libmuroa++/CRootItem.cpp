@@ -9,9 +9,12 @@
 
 #include "CCategoryItem.h"
 #include "CMediaItem.h"
+#include "CDiff.h"
 
 #include <iostream>
 #include <sstream>
+
+#include <regex>
 
 #include <cassert>
 #include <cstring>
@@ -91,36 +94,6 @@ void CRootItem::deserialize(std::string text) {
 		if( strlen(cline) < 3)  continue;
 		// assert( cline[0] != 0 && cline[1] != 0 && cline[2] != 0 );
 
-		// char cat =  cline[0];
-		// string line(cline);  // skip category letter and tab
-//		switch(cat) {
-//		case 'c': {
-//			string name;
-//			size_t rpos = line.rfind('\t');
-//			if(rpos != string::npos) {
-//				name = line.substr(rpos, line.size());
-//			}
-//			else {
-//				name = line;
-//			}
-//			string newItemParentsName = CCategoryItem::getParentPath(line);
-//			CItemBase* newItemsPrarent = getItemPtr(newItemParentsName);
-//			currentCategory = newItemsPrarent;
-//
-//			if(newItemsPrarent != 0) {
-//				CCategoryItem* newitem = new CCategoryItem(name, newItemsPrarent);
-//				setItemPtr(line, newitem);
-//			}
-//			break;
-//		}
-//		case 'm': {
-//			CMediaItem* mItem = new CMediaItem(line, currentCategory);
-//
-//			break;
-//		}
-//		default:
-//			break;
-//		}
 	}
 }
 
@@ -129,6 +102,61 @@ void CRootItem::deserialize(std::string text) {
 std::string CRootItem::serialize() {
 	return m_base->serialize();
 }
+
+
+
+string CRootItem::diff(CRootItem& other) {
+	CDiff differ;
+	string diff = differ.diff( serialize(), other.serialize() );
+
+	return diff;
+}
+
+void CRootItem::patch(std::string diff) throw(std::invalid_argument) {
+	istringstream iss(diff);
+
+    std::regex rx("^@@ -(\\d+),(\\d+)\\s+\\+(\\d+),(\\d+)\\s*@@$");
+    int oldStart(0);
+	int oldLen(0);
+	int newStart(0);
+	int newLen(0);
+
+	string line;
+	while(!iss.eof()) {
+		getline(iss, line);
+		if(iss.bad()) {
+			cerr << "CRootItem::patch: Error reading lines." << endl;
+		}
+
+		if( line.find("@@") == 0 ) {
+			// diff chunk header
+		    std::cmatch res;
+		    std::regex_search(line.c_str(), res, rx);
+
+		    string oldStartStr = res[1];
+			string oldLenStr = res[2];
+			string newStartStr = res[3];
+			string newLenStr = res[4];
+
+			oldStart = str2long( oldStartStr );
+			oldLen = str2long( oldLenStr );
+			newStart = str2long( newStartStr );
+			newLen = str2long( newLenStr );
+
+
+		}
+		else {
+
+
+
+		}
+	}
+
+
+}
+
+
+
 
 bool CRootItem::operator==(const CRootItem& other) {
 	return (*m_base == *(other.m_base));
@@ -164,4 +192,15 @@ CCategoryItem* CRootItem::mkPath(string path) {
 	}
 
 	return static_cast<CCategoryItem*>(parent);
+}
+
+
+long CRootItem::str2long(std::string str) throw(std::invalid_argument) {
+	errno = 0;
+	char* endptr;
+	long iVal = strtol( str.c_str(), &endptr, 10);
+	if (errno != 0 || endptr != '\0' ) {
+		throw invalid_argument("convert string to int");
+	}
+	return iVal;
 }

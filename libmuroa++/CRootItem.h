@@ -12,6 +12,8 @@
 #include <map>
 #include <iostream>
 
+#include <stdexcept>
+
 class CItemBase;
 class CCategoryItem;
 class CMediaItem;
@@ -51,6 +53,9 @@ public:
 	std::string serialize();
 	void deserialize(std::string text);
 
+	std::string diff(CRootItem& other);
+	void patch(std::string diff) throw(std::invalid_argument);
+
 	bool operator==(const CRootItem& other);
 
 
@@ -59,6 +64,7 @@ private:
 	CCategoryItem* m_base;
 
 	CCategoryItem* mkPath(std::string path);
+	long str2long(std::string str) throw(std::invalid_argument);
 };
 
 #endif /* CROOTITEM_H_ */
