@@ -13,6 +13,8 @@ add_definitions( ${QT4_DEFINITIONS} -D__STDC_CONSTANT_MACROS)
 
 set( unittests_SRCS   CCollectionTest.cpp
                       CDiffTest.cpp
+                      CRootItemDiffTest.cpp
+                      CUtils.cpp
                       LibMuroaTestApp.cpp
                       )
                     
@@ -20,7 +22,9 @@ set( unittests_H
                       )
                     
  set( HEADERS         CCollectionTest.h
-                      CDiffTest.h  
+                      CDiffTest.h
+                      CRootItemDiffTest.h
+                      CUtils.h  
                       )                    
   
 

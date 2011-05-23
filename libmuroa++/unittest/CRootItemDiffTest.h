@@ -1,6 +1,6 @@
 /***************************************************************************
  *
- *   CDiffTest.h
+ *   CRootItemDiffTest.h
  *
  *   This file is part of libmuroa++                                  *
  *   Copyright (C) 2011 by Martin Runge <martin.runge@web.de>           *
@@ -21,8 +21,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef CDIFFTEST_H_
-#define CDIFFTEST_H_
+#ifndef CROOTITEMDIFFTEST_H_
+#define CROOTITEMDIFFTEST_H_
 
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/TestFixture.h>
@@ -34,26 +34,23 @@
 class CCategoryItem;
 class CRootItem;
 
-class CDiffTest : public CppUnit::TestFixture {
-	  CPPUNIT_TEST_SUITE( CDiffTest );
-	  CPPUNIT_TEST( diff );
+class CRootItemDiffTest : public CppUnit::TestFixture {
+	  CPPUNIT_TEST_SUITE( CRootItemDiffTest );
 	  CPPUNIT_TEST( patch );
 	  CPPUNIT_TEST_SUITE_END();
 
 public:
-	CDiffTest();
-	virtual ~CDiffTest();
+	CRootItemDiffTest();
+	virtual ~CRootItemDiffTest();
 
 	void setUp();
     void tearDown();
 
-    void diff();
 	void patch();
 
 private:
 	CRootItem* m_rootItem;
 
-	CDiff m_diff;
 };
 
-#endif /* CDIFFTEST_H_ */
+#endif /* CROOTITEMDIFFTEST_H_ */

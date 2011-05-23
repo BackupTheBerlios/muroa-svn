@@ -1,6 +1,6 @@
 /***************************************************************************
  *
- *   CDiffTest.h
+ *   CUtils.cpp
  *
  *   This file is part of libmuroa++                                  *
  *   Copyright (C) 2011 by Martin Runge <martin.runge@web.de>           *
@@ -21,39 +21,38 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef CDIFFTEST_H_
-#define CDIFFTEST_H_
+#include "CUtils.h"
+#include <sstream>
+#include <fstream>
+#include <iostream>
 
-#include <cppunit/extensions/HelperMacros.h>
-#include <cppunit/TestFixture.h>
+#include <vector>
 
-#include "CDiff.h"
+using namespace std;
 
-#include <string>
+CUtils::CUtils() {
+	// TODO Auto-generated constructor stub
 
-class CCategoryItem;
-class CRootItem;
+}
 
-class CDiffTest : public CppUnit::TestFixture {
-	  CPPUNIT_TEST_SUITE( CDiffTest );
-	  CPPUNIT_TEST( diff );
-	  CPPUNIT_TEST( patch );
-	  CPPUNIT_TEST_SUITE_END();
+CUtils::~CUtils() {
+	// TODO Auto-generated destructor stub
+}
 
-public:
-	CDiffTest();
-	virtual ~CDiffTest();
+string CUtils::file2string(const string &fileName)
+{
+    ifstream ifs(fileName.c_str(), ios::in | ios::binary | ios::ate);
 
-	void setUp();
-    void tearDown();
+    if(ifs.is_open()) {
+    	ifstream::pos_type fileSize = ifs.tellg();
+    	ifs.seekg(0, ios::beg);
 
-    void diff();
-	void patch();
+    	vector<char> bytes(fileSize);
+    	ifs.read(&bytes[0], fileSize);
 
-private:
-	CRootItem* m_rootItem;
-
-	CDiff m_diff;
-};
-
-#endif /* CDIFFTEST_H_ */
+    	return string(&bytes[0], fileSize);
+    }
+    else {
+    	cerr << "could not open file " << fileName << endl;
+   	}
+}

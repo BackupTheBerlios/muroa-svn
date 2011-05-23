@@ -1,6 +1,6 @@
 /***************************************************************************
  *
- *   CDiffTest.h
+ *   CUtils.h
  *
  *   This file is part of libmuroa++                                  *
  *   Copyright (C) 2011 by Martin Runge <martin.runge@web.de>           *
@@ -21,39 +21,18 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef CDIFFTEST_H_
-#define CDIFFTEST_H_
-
-#include <cppunit/extensions/HelperMacros.h>
-#include <cppunit/TestFixture.h>
-
-#include "CDiff.h"
+#ifndef CUTILS_H_
+#define CUTILS_H_
 
 #include <string>
 
-class CCategoryItem;
-class CRootItem;
-
-class CDiffTest : public CppUnit::TestFixture {
-	  CPPUNIT_TEST_SUITE( CDiffTest );
-	  CPPUNIT_TEST( diff );
-	  CPPUNIT_TEST( patch );
-	  CPPUNIT_TEST_SUITE_END();
-
+class CUtils {
 public:
-	CDiffTest();
-	virtual ~CDiffTest();
+	CUtils();
+	virtual ~CUtils();
 
-	void setUp();
-    void tearDown();
+	static std::string file2string(const std::string &fileName);
 
-    void diff();
-	void patch();
-
-private:
-	CRootItem* m_rootItem;
-
-	CDiff m_diff;
 };
 
-#endif /* CDIFFTEST_H_ */
+#endif /* CUTILS_H_ */

@@ -1,6 +1,6 @@
 /***************************************************************************
  *
- *   CDiffTest.h
+ *   CRootItemDiffTest.cpp
  *
  *   This file is part of libmuroa++                                  *
  *   Copyright (C) 2011 by Martin Runge <martin.runge@web.de>           *
@@ -21,39 +21,49 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef CDIFFTEST_H_
-#define CDIFFTEST_H_
+#include "CRootItemDiffTest.h"
+#include "CRootItem.h"
+#include "CUtils.h"
 
-#include <cppunit/extensions/HelperMacros.h>
-#include <cppunit/TestFixture.h>
+#include <sstream>
 
-#include "CDiff.h"
+using namespace std;
 
-#include <string>
+CPPUNIT_TEST_SUITE_REGISTRATION( CRootItemDiffTest );
 
-class CCategoryItem;
-class CRootItem;
+CRootItemDiffTest::CRootItemDiffTest() {
+	// TODO Auto-generated constructor stub
 
-class CDiffTest : public CppUnit::TestFixture {
-	  CPPUNIT_TEST_SUITE( CDiffTest );
-	  CPPUNIT_TEST( diff );
-	  CPPUNIT_TEST( patch );
-	  CPPUNIT_TEST_SUITE_END();
+}
 
-public:
-	CDiffTest();
-	virtual ~CDiffTest();
+CRootItemDiffTest::~CRootItemDiffTest() {
+	// TODO Auto-generated destructor stub
+}
 
-	void setUp();
-    void tearDown();
 
-    void diff();
-	void patch();
+void CRootItemDiffTest::setUp() {
+	m_rootItem = new CRootItem;
+}
 
-private:
-	CRootItem* m_rootItem;
+void CRootItemDiffTest::tearDown() {
+	delete m_rootItem;
+}
 
-	CDiff m_diff;
-};
 
-#endif /* CDIFFTEST_H_ */
+void CRootItemDiffTest::patch() {
+	string orig = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch/origcollection.txt" );
+	m_rootItem->deserialize(orig);
+
+	string diff = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch/diff.txt" );
+	m_rootItem->patch(diff);
+
+	string expected_modified = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch/modcollection.txt" );
+	CRootItem refItem;
+	refItem.deserialize(expected_modified);
+
+	CPPUNIT_ASSERT( (*m_rootItem) == refItem );
+}
+
+
+
+

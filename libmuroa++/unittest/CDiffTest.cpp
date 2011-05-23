@@ -24,7 +24,7 @@
 #include "CDiffTest.h"
 #include "CRootItem.h"
 
-#include <sstream>
+#include "CUtils.h"
 
 using namespace std;
 
@@ -47,35 +47,26 @@ void CDiffTest::tearDown() {
 }
 
 void CDiffTest::diff() {
-	string orig = file2string( "unittest/testcases/origcollection.txt" );
-	string modified = file2string( "unittest/testcases/modcollection.txt" );
+	string orig = CUtils::file2string( "unittest/testcases/CDiffTest_diff/origcollection.txt" );
+	string modified = CUtils::file2string( "unittest/testcases/CDiffTest_diff/modcollection.txt" );
 
 	string difference = m_diff.diff(orig, modified);
-	cerr << "###" << difference << "###" << endl;
+	cerr << "### CDiffTest::diff ###" << endl << difference << endl << "### end of CDiffTest::diff ###" << endl;
 
-	string expected_diff = file2string( "unittest/testcases/diff.txt" );
+	string expected_diff = CUtils::file2string( "unittest/testcases/CDiffTest_diff/diff.txt" );
 
 	CPPUNIT_ASSERT(expected_diff.compare(difference) == 0);
 }
 
 void CDiffTest::patch() {
+	string orig = CUtils::file2string( "unittest/testcases/CDiffTest_patch/origcollection.txt" );
+	string diff = CUtils::file2string( "unittest/testcases/CDiffTest_patch/diff.txt" );
 
+	string modified = m_diff.patch(orig, diff);
+	cerr << "### CDiffTest::patch ###" << endl << modified << endl << "### end of CDiffTest::patch ###" << endl;
+
+	string expected_modified = CUtils::file2string( "unittest/testcases/CDiffTest_patch/modcollection.txt" );
+
+	CPPUNIT_ASSERT(expected_modified.compare(modified) == 0);
 }
 
-string CDiffTest::file2string(const string &fileName)
-{
-    ifstream ifs(fileName.c_str(), ios::in | ios::binary | ios::ate);
-
-    if(ifs.is_open()) {
-    	ifstream::pos_type fileSize = ifs.tellg();
-    	ifs.seekg(0, ios::beg);
-
-    	vector<char> bytes(fileSize);
-    	ifs.read(&bytes[0], fileSize);
-
-    	return string(&bytes[0], fileSize);
-    }
-    else {
-    	cerr << "could not open file " << fileName << endl;
-   	}
-}

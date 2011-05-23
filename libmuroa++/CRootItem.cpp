@@ -14,7 +14,7 @@
 #include <iostream>
 #include <sstream>
 
-#include <regex>
+#include <boost/regex.hpp>
 
 #include <cassert>
 #include <cstring>
@@ -115,11 +115,14 @@ string CRootItem::diff(CRootItem& other) {
 void CRootItem::patch(std::string diff) throw(std::invalid_argument) {
 	istringstream iss(diff);
 
-    std::regex rx("^@@ -(\\d+),(\\d+)\\s+\\+(\\d+),(\\d+)\\s*@@$");
+    boost::regex rx("^@@ -(\\d+),(\\d+)\\s+\\+(\\d+),(\\d+)\\s*@@$");
     int oldStart(0);
 	int oldLen(0);
 	int newStart(0);
 	int newLen(0);
+
+	int lineNr = 0;
+	int chunkSizeSum = 0;
 
 	string line;
 	while(!iss.eof()) {
@@ -130,8 +133,8 @@ void CRootItem::patch(std::string diff) throw(std::invalid_argument) {
 
 		if( line.find("@@") == 0 ) {
 			// diff chunk header
-		    std::cmatch res;
-		    std::regex_search(line.c_str(), res, rx);
+			boost::cmatch res;
+		    boost::regex_search(line.c_str(), res, rx);
 
 		    string oldStartStr = res[1];
 			string oldLenStr = res[2];
@@ -143,15 +146,57 @@ void CRootItem::patch(std::string diff) throw(std::invalid_argument) {
 			newStart = str2long( newStartStr );
 			newLen = str2long( newLenStr );
 
+			if(oldLen == 0) oldStart++;
+			lineNr = oldStart + chunkSizeSum;
+
+			chunkSizeSum += newLen - oldLen;
+			// cerr << "- << oldStart << "," << oldLen << " + " << newStart << "," << newLen << endl;
 
 		}
 		else {
+			char sign = line[0];
+			string content = line.substr(1, line.size() - 1);
 
+			switch(sign){
+				case '+': //insert
+				{
+					//cerr << "adding line : << lineNr << endl;;
+					//cerr << "from diff : "<< content << endl;
+					CMediaItem* newItem = addMediaItem(content);
+					break;
+				}
+				case '-': //remove
+				{
+					if(content.compare(m_items.at(lineNr - 1)->getText()) != 0 )	// possible error:
+					{
+						cerr << "Error when removing line " << lineNr << " :" << endl;
+						cerr << "line expected from diff : "<< content << endl;
+						cerr << "differs form collection : " << m_items.at(lineNr - 1)->getText());
+					}
+					T* item = m_items.takeAt(lineNr - 1);
+					m_hashMap.remove(item->getHash());
+					delete item;
+					lineNr--;
+					break;
+				}
+				case ' ': //check
+				{
+					if(content.compare(m_items.at(lineNr - 1)->getText()) != 0 )	// possible error:
+					{
+						cerr << "Error when keeping line " << lineNr << " :" << endl;
+						cerr << "line expected from diff : "<< content << endl;
+						cerr << "differs form collection : " << m_items.at(lineNr - 1)->getText());
+					}
+					break;
+				}
+				default:
+					break;
 
+			}
+			lineNr++;
 
 		}
 	}
-
 
 }
 
