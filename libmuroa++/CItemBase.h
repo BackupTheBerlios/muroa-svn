@@ -27,9 +27,12 @@
 #include <string>
 #include <vector>
 
+class CMediaItem;
+class CCategoryItem;
+
 class CItemBase {
 public:
-	CItemBase(CItemBase*  parent);
+	CItemBase(CCategoryItem*  parent);
 	virtual ~CItemBase();
 
 protected:
@@ -37,20 +40,17 @@ protected:
 
 public:
 	inline std::string getName() { return m_name; };
-	inline std::string getPath() { return m_path; };
 
-	inline CItemBase* getParent() { return m_parent; };
-	virtual void addChild(CItemBase* newChild) = 0;
+	inline CCategoryItem* getParent() { return m_parent; };
+	virtual void addChild(CMediaItem* newChild) = 0;
 
 	inline std::string getText() { return m_text; };
-
 	virtual std::string serialize() = 0;
 
 protected:
 	std::string m_name;
-	std::string m_path;
 
-	CItemBase*  m_parent;
+	CCategoryItem*  m_parent;
 
 	std::string m_text;
 	void replaceTabs(std::string& str);

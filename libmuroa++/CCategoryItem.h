@@ -29,24 +29,35 @@
 #include <string>
 #include <sstream>
 
+class CMediaItem;
 
 class CCategoryItem : public CItemBase {
 public:
-	CCategoryItem(std::string text = std::string(), CItemBase*  parent = 0);
+	CCategoryItem(std::string text = std::string(), CCategoryItem*  parent = 0);
 	virtual ~CCategoryItem();
 
-	void addChild(CItemBase* newChild);
+	inline std::string getPath() { return m_path; };
+
+	void addChild(CCategoryItem* newSubCategory);
+	void addChild(CMediaItem*    newMediaItem);
+
 	std::string serialize();
 
+	std::string diff(const CCategoryItem* other);
+
 	bool operator==(const CCategoryItem& other);
-	inline bool operator!=(const CCategoryItem& other) { return !operator==(other);}
+	inline bool operator!=(const CCategoryItem& other) {
+		return !operator==(other);
+	}
 
 	static std::string getParentPath(std::string ownPath);
 private:
-	std::vector<CItemBase*>  m_children;
+	std::vector<CCategoryItem*>  m_sub_categories;
+	std::vector<CMediaItem*>     m_media_items;
 	std::istringstream m_iss;
 
 	int m_depth;
+	std::string m_path;
 };
 
 #endif /* CCATEGORYITEM_H_ */

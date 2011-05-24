@@ -27,7 +27,7 @@
 using namespace std;
 using namespace boost;
 
-CItemBase::CItemBase(CItemBase*  parent) :
+CItemBase::CItemBase(CCategoryItem*  parent) :
            m_parent(parent)
 {
 }

@@ -23,14 +23,15 @@
 
 #include "CCategoryItem.h"
 #include "CMediaItem.h"
+#include "CDiff.h"
+
 #include <typeinfo>
 #include <iostream>
 #include <cassert>
 
 using namespace std;
 
-CCategoryItem::CCategoryItem(string text, CItemBase*  parent) :
-               CItemBase(parent)
+CCategoryItem::CCategoryItem(string text, CCategoryItem*  parent) : CItemBase(parent)
 {
 	replaceTabs(text);
 	m_name = text;
@@ -47,27 +48,80 @@ CCategoryItem::CCategoryItem(string text, CItemBase*  parent) :
 
 
 CCategoryItem::~CCategoryItem() {
-	std::vector<CItemBase*>::iterator it;
-	for(it = m_children.begin(); it != m_children.end(); it++ ) {
-		delete *it;
+	std::vector<CCategoryItem*>::iterator cit;
+	for(cit = m_sub_categories.begin(); cit != m_sub_categories.end(); cit++ ) {
+		delete *cit;
+	}
+
+	std::vector<CMediaItem*>::iterator mit;
+	for(mit = m_media_items.begin(); mit != m_media_items.end(); mit++ ) {
+		delete *mit;
 	}
 }
 
-void CCategoryItem::addChild(CItemBase* newChild) {
-	m_children.push_back(newChild);
+void CCategoryItem::addChild(CCategoryItem* newSubCategory) {
+	m_sub_categories.push_back(newSubCategory);
+}
+
+void CCategoryItem::addChild(CMediaItem*    newMediaItem) {
+	m_media_items.push_back(newMediaItem);
 }
 
 string CCategoryItem::serialize() {
 	string result;
 	// result.append(m_path);
 	// result.append("\n");
-	std::vector<CItemBase*>::iterator it;
-	for(it = m_children.begin(); it != m_children.end(); it++ ) {
-		result.append((*it)->serialize());
+	std::vector<CCategoryItem*>::iterator cit;
+	for(cit = m_sub_categories.begin(); cit != m_sub_categories.end(); cit++ ) {
+		result.append((*cit)->serialize());
+	}
+
+	std::vector<CMediaItem*>::iterator mit;
+	for(mit = m_media_items.begin(); mit != m_media_items.end(); mit++ ) {
+		result.append((*mit)->serialize());
 	}
 
 	return result;
 }
+
+string CCategoryItem::diff(const CCategoryItem* other) {
+	string diff;
+
+	vector<CCategoryItem*>::const_iterator cit = m_sub_categories.begin();
+	vector<CCategoryItem*>::const_iterator other_cit = other->m_sub_categories.begin();
+	while( cit != m_sub_categories.end() && other_cit != other->m_sub_categories.end()) {
+		if( (*cit) != (*other_cit) ) {
+			string result = (*cit)->diff(*other_cit);
+			diff.append(result);
+		}
+		cit++;
+		other_cit++;
+	}
+
+	bool are_equal = true;
+	string ltext, rtext;
+	vector<CMediaItem*>::const_iterator mit = m_media_items.begin();
+	vector<CMediaItem*>::const_iterator other_mit = other->m_media_items.begin();
+	while( mit != m_media_items.end() && other_mit != other->m_media_items.end()) {
+		if((*mit) != (*other_mit)) {
+			are_equal = false;
+		}
+
+		ltext.append((*mit)->getText());
+		rtext.append((*other_mit)->getText());
+		mit++;
+		other_mit++;
+	}
+
+	if(!are_equal) {
+		CDiff differ;
+		string result;
+		result = differ.diff(ltext, rtext);
+		diff.append(result);
+	}
+	return diff;
+}
+
 
 bool CCategoryItem::operator==(const CCategoryItem& other) {
 
@@ -79,38 +133,35 @@ bool CCategoryItem::operator==(const CCategoryItem& other) {
 		return false;
 	}
 
-	if( m_children.size() != other.m_children.size() ) {
+	if( m_sub_categories.size() != other.m_sub_categories.size() ) {
 		return false;
 	}
 
-	vector<CItemBase*>::const_iterator it = m_children.begin();
-	vector<CItemBase*>::const_iterator other_it = other.m_children.begin();
-
-	while( it != m_children.end() && other_it != other.m_children.end()) {
-		string type_it = typeid(*it).name();
-		string type_other_it = typeid(*other_it).name();
-
-		CCategoryItem* cItemLhs = dynamic_cast<CCategoryItem*>(*it);
-		CCategoryItem* cItemRhs = dynamic_cast<CCategoryItem*>(*other_it);
-		if(cItemLhs == 0 || cItemRhs == 0) {
-			CMediaItem* mItemLhs = dynamic_cast<CMediaItem*>(*it);
-			CMediaItem* mItemRhs = dynamic_cast<CMediaItem*>(*other_it);
-			assert( mItemLhs != 0 && mItemRhs != 0);
-			return (*mItemLhs == *mItemRhs );
-		}
-		else {
-			if( (*cItemLhs) != (*cItemRhs) ) {
-				return false;
-			}
-		}
-
-		if((*it)->getText().compare((*other_it)->getText()) != 0) {
-			return false;
-		}
-		it++;
-		other_it++;
+	if( m_media_items.size() != other.m_media_items.size() ) {
+		return false;
 	}
 
+	vector<CCategoryItem*>::const_iterator cit = m_sub_categories.begin();
+	vector<CCategoryItem*>::const_iterator other_cit = other.m_sub_categories.begin();
+	while( cit != m_sub_categories.end() && other_cit != other.m_sub_categories.end()) {
+		if( *(*cit) != *(*other_cit) ) {
+			return false;
+		}
+		cit++;
+		other_cit++;
+
+	}
+
+	vector<CMediaItem*>::const_iterator mit = m_media_items.begin();
+	vector<CMediaItem*>::const_iterator other_mit = other.m_media_items.begin();
+	while( mit != m_media_items.end() && other_mit != other.m_media_items.end()) {
+		if( *(*mit) != *(*other_mit) ) {
+			return false;
+		}
+		mit++;
+		other_mit++;
+
+	}
 	return true;
 }
 

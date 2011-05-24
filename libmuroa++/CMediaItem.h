@@ -14,8 +14,8 @@
 
 class CMediaItem : public CItemBase {
 public:
-	CMediaItem(CItemBase*  parent);
-	CMediaItem(std::string text, CItemBase*  parent);
+	CMediaItem(CCategoryItem*  parent);
+	CMediaItem(std::string text, CCategoryItem*  parent);
 	virtual ~CMediaItem();
 
     inline std::string getAlbum() const { return m_album; }
@@ -36,8 +36,9 @@ public:
 	inline int getHash() { return m_hash; };
 
 	bool operator==(const CMediaItem& other);
+	inline bool operator!=(const CMediaItem& other){ return !operator==(other); };
 
-	void addChild(CItemBase* newChild);
+	void addChild(CMediaItem* newMediaItem);
 	std::string serialize();
 
 private:

@@ -23,8 +23,8 @@ public:
 	CRootItem();
 	virtual ~CRootItem();
 
-	CItemBase* getItemPtr(std::string path) {
-    	std::map<std::string, CItemBase*>::iterator it;
+	CCategoryItem* getItemPtr(std::string path) {
+    	std::map<std::string, CCategoryItem*>::iterator it;
     	it = m_map.find(path);
     	if(it == m_map.end()) {
     		return 0;
@@ -34,9 +34,9 @@ public:
     	}
    	}
 
-	inline void setItemPtr(std::string path, CItemBase* itemPtr) {
-		std::pair<std::map<std::string, CItemBase*>::iterator,bool> ret;
-		ret = m_map.insert(std::pair<std::string,CItemBase*>(path, itemPtr));
+	inline void setItemPtr(std::string path, CCategoryItem* itemPtr) {
+		std::pair<std::map<std::string, CCategoryItem*>::iterator,bool> ret;
+		ret = m_map.insert(std::pair<std::string,CCategoryItem*>(path, itemPtr));
 		if (ret.second==false)
 		{
 		    std::cout << "element 'z' already existed";
@@ -60,7 +60,7 @@ public:
 
 
 private:
-	std::map<std::string, CItemBase*> m_map;
+	std::map<std::string, CCategoryItem*> m_map;
 	CCategoryItem* m_base;
 
 	CCategoryItem* mkPath(std::string path);

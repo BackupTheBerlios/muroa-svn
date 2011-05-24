@@ -6,6 +6,7 @@
  */
 
 #include "CMediaItem.h"
+#include "CCategoryItem.h"
 
 #include <sstream>
 #include <functional>
@@ -17,10 +18,10 @@
 using namespace std;
 
 
-CMediaItem::CMediaItem(CItemBase*  parent) : CItemBase( parent ) {
+CMediaItem::CMediaItem(CCategoryItem*  parent) : CItemBase( parent ) {
 }
 
-CMediaItem::CMediaItem(std::string text, CItemBase*  parent)
+CMediaItem::CMediaItem(std::string text, CCategoryItem*  parent)
    : CItemBase( parent ) {
 
 	m_text = text;
@@ -161,7 +162,7 @@ bool CMediaItem::operator==(const CMediaItem& other) {
 	return rc;
 }
 
-void CMediaItem::addChild(CItemBase* newChild) {
+void CMediaItem::addChild(CMediaItem* newMediaItem) {
 	throw std::runtime_error( "CMediaItem may not have children!");
 }
 
