@@ -166,6 +166,13 @@ void CMediaItem::addChild(CMediaItem* newMediaItem) {
 	throw std::runtime_error( "CMediaItem may not have children!");
 }
 
-string CMediaItem::serialize() {
-	return m_text;
+string CMediaItem::serialize(bool asDiff) {
+	if(asDiff) {
+		string diffline("+");
+		diffline.append(m_text);
+		return diffline;
+	}
+	else {
+		return m_text;
+	}
 }

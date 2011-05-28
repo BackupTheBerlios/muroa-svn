@@ -45,7 +45,7 @@ public:
 	virtual void addChild(CMediaItem* newChild) = 0;
 
 	inline std::string getText() { return m_text; };
-	virtual std::string serialize() = 0;
+	virtual std::string serialize(bool asDiff = false) = 0;
 
 protected:
 	std::string m_name;

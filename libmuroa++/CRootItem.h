@@ -53,7 +53,7 @@ public:
 	std::string serialize();
 	void deserialize(std::string text);
 
-	std::string diff(CRootItem& other);
+	std::string diff(const CRootItem& other);
 	void patch(std::string diff) throw(std::invalid_argument);
 
 	bool operator==(const CRootItem& other);

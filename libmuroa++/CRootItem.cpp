@@ -105,11 +105,11 @@ std::string CRootItem::serialize() {
 
 
 
-string CRootItem::diff(CRootItem& other) {
+string CRootItem::diff(const CRootItem& other) {
 //	CDiff differ;
 //	string diff = differ.diff( serialize(), other.serialize() );
 
-	return m_base->diff(m_base);
+	return m_base->diff(other.m_base);
 }
 
 void CRootItem::patch(std::string diff) throw(std::invalid_argument) {

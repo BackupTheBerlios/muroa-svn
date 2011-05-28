@@ -39,7 +39,7 @@ public:
 	inline bool operator!=(const CMediaItem& other){ return !operator==(other); };
 
 	void addChild(CMediaItem* newMediaItem);
-	std::string serialize();
+	std::string serialize(bool asDiff = false);
 
 private:
 

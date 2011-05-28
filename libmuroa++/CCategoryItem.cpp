@@ -67,18 +67,24 @@ void CCategoryItem::addChild(CMediaItem*    newMediaItem) {
 	m_media_items.push_back(newMediaItem);
 }
 
-string CCategoryItem::serialize() {
+string CCategoryItem::serialize(bool asDiff) {
 	string result;
 	// result.append(m_path);
 	// result.append("\n");
 	std::vector<CCategoryItem*>::iterator cit;
 	for(cit = m_sub_categories.begin(); cit != m_sub_categories.end(); cit++ ) {
-		result.append((*cit)->serialize());
+		result.append((*cit)->serialize(asDiff));
 	}
 
+	if(asDiff) {
+		ostringstream oss;
+		oss << "+++ " << getPath() << endl;
+		oss << "@@ -0,0 +1," << m_media_items.size() << endl;
+		result.append(oss.str());
+	}
 	std::vector<CMediaItem*>::iterator mit;
 	for(mit = m_media_items.begin(); mit != m_media_items.end(); mit++ ) {
-		result.append((*mit)->serialize());
+		result.append((*mit)->serialize(asDiff));
 	}
 
 	return result;
@@ -87,33 +93,75 @@ string CCategoryItem::serialize() {
 string CCategoryItem::diff(const CCategoryItem* other) {
 	string diff;
 
-	vector<CCategoryItem*>::const_iterator cit = m_sub_categories.begin();
+	vector<CCategoryItem*>::const_iterator cit;
 	vector<CCategoryItem*>::const_iterator other_cit = other->m_sub_categories.begin();
-	while( cit != m_sub_categories.end() && other_cit != other->m_sub_categories.end()) {
-		if( (*cit) != (*other_cit) ) {
-			string result = (*cit)->diff(*other_cit);
-			diff.append(result);
+
+	string childpath;
+	for(cit = m_sub_categories.begin(); cit != m_sub_categories.end(); cit++ ) {
+
+		childpath = (*cit)->getPath();
+		cerr << "outer for: cit: " << childpath << " other cit: " << (*other_cit)->getPath() << endl;
+
+		if( other_cit == other->m_sub_categories.end() || childpath.compare( (*other_cit)->getPath()) < 0 ) {
+			// old is smaller than new or new has no sub_categories left-> this entry disappeared in new
+			ostringstream oss;
+			oss << "--- " << (*cit)->getPath() << endl;
+			diff.append(oss.str());
+			continue;
 		}
-		cit++;
+
+		while( other_cit != other->m_sub_categories.end()) {
+			string other_childpath = (*other_cit)->getPath();
+
+			cerr << "inner while: cit: " << childpath << " other cit: " << other_childpath << " ";
+
+			if( childpath.compare( other_childpath ) < 0  ) {
+				cerr << "break " << endl;
+				break;
+			}
+			if( childpath.compare( other_childpath ) > 0  ) {
+				string result = (*other_cit)->serialize(true);
+				diff.append(result);
+			}
+			else {
+				cerr << " doing diff: " << endl;
+				// other_cit is either not present in cit or just differs
+				string result = (*cit)->diff(*other_cit);
+				diff.append(result);
+			}
+			other_cit++;
+		}
+	}
+
+	while( other_cit != other->m_sub_categories.end()) {
+		string other_childpath = (*other_cit)->getPath();
+
+		cerr << "later while: other cit: " << other_childpath << " ";
+		cerr << " doing diff anyway: " << endl;
+		// other_cit is either not present in cit or just differs
+		string result = (*other_cit)->serialize(true);
+		diff.append(result);
+
 		other_cit++;
 	}
 
-	bool are_equal = true;
-	string ltext, rtext;
-	vector<CMediaItem*>::const_iterator mit = m_media_items.begin();
-	vector<CMediaItem*>::const_iterator other_mit = other->m_media_items.begin();
-	while( mit != m_media_items.end() && other_mit != other->m_media_items.end()) {
-		if((*mit) != (*other_mit)) {
-			are_equal = false;
-		}
 
+	string ltext, rtext;
+	vector<CMediaItem*>::const_iterator mit;
+	vector<CMediaItem*>::const_iterator other_mit;
+
+	for(mit = m_media_items.begin(); mit != m_media_items.end(); mit++) {
 		ltext.append((*mit)->getText());
-		rtext.append((*other_mit)->getText());
-		mit++;
-		other_mit++;
 	}
 
-	if(!are_equal) {
+	for(other_mit = other->m_media_items.begin(); other_mit != other->m_media_items.end(); other_mit++) {
+		rtext.append((*other_mit)->getText());
+	}
+
+	if(ltext.compare(rtext) != 0 ) {
+		ostringstream oss;
+		oss << "+++ " << getPath() << endl;
+		diff.append(oss.str());
 		CDiff differ;
 		string result;
 		result = differ.diff(ltext, rtext);

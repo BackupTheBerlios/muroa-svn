@@ -36,12 +36,12 @@ public:
 	CCategoryItem(std::string text = std::string(), CCategoryItem*  parent = 0);
 	virtual ~CCategoryItem();
 
-	inline std::string getPath() { return m_path; };
+	inline std::string getPath() const { return m_path; };
 
 	void addChild(CCategoryItem* newSubCategory);
 	void addChild(CMediaItem*    newMediaItem);
 
-	std::string serialize();
+	std::string serialize(bool asDiff = false);
 
 	std::string diff(const CCategoryItem* other);
 

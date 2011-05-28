@@ -111,8 +111,8 @@ int CDiff::output(void *priv, mmbuffer_t *mb, int nbuf)
 	for (i = 0; i < nbuf; i++)
 	{
 		deltaPtr->append(mb[i].ptr, mb[i].size );
-		string dbg(mb[i].ptr, mb[i].size);
-		cout << "Diff Block: " <<  dbg << endl;
+		// string dbg(mb[i].ptr, mb[i].size);
+		// cout << "Diff Block: " <<  dbg << endl;
 	}
 	return 0;
 
