@@ -1,1 +1,0 @@
-/home/martin/devel/muroa/libmuroa++/unittest/testcases/CDiffTest_diff/origcollection.txt
