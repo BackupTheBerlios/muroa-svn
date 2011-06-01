@@ -17,6 +17,16 @@
 
 using namespace std;
 
+uint32_t CMediaItem::hash( std::string stdstr ) {
+	uint32_t hash = 0;
+	int c;
+	const char* str = stdstr.c_str();
+
+	while (c = *str++)
+		hash = c + (hash << 6) + (hash << 16) - hash;
+
+	return hash;
+}
 
 CMediaItem::CMediaItem(CCategoryItem*  parent) : CItemBase( parent ) {
 }
@@ -118,7 +128,7 @@ void CMediaItem::rehash() {
 	ss << "\t" << m_filename << "\t" << m_artist << "\t" << m_album << "\t" << m_title << "\t" << m_year << "\t" << m_duration_in_s;
 	//ss << "m\t" <<  m_filename << "\t" << m_artist << "\t" << m_album << "\t" << m_title << "\t" << m_year << "\t" << m_duration_in_s;
 
-	m_hash = hash<string>()( ss.str() );
+	m_hash = hash( ss.str() );
 	ss << "\t" << m_hash << endl;
 
 	m_text = ss.str();

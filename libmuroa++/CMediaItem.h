@@ -33,13 +33,15 @@ public:
     void setTitle(std::string title);
     void setYear(int year);
 
-	inline int getHash() { return m_hash; };
+	inline uint32_t getHash() { return m_hash; };
 
 	bool operator==(const CMediaItem& other);
 	inline bool operator!=(const CMediaItem& other){ return !operator==(other); };
 
 	void addChild(CMediaItem* newMediaItem);
 	std::string serialize(bool asDiff = false);
+
+	static uint32_t hash( std::string stdstr );
 
 private:
 
@@ -50,7 +52,7 @@ private:
 	int m_year;
 	int m_duration_in_s;
 
-	unsigned m_hash;
+	uint32_t m_hash;
 
 	void rehash();
 };
