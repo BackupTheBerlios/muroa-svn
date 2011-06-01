@@ -35,6 +35,7 @@ class CCollectionTest: public CppUnit::TestFixture {
 	  CPPUNIT_TEST( replaceTabs );
 	  CPPUNIT_TEST( construct );
 	  CPPUNIT_TEST( serializeMedia );
+	  CPPUNIT_TEST( deserializeMedia );
 	  CPPUNIT_TEST( serializeCategory );
 	  CPPUNIT_TEST( traverse );
 	  CPPUNIT_TEST( serialize );
@@ -52,6 +53,7 @@ public:
 	void construct();
 	void traverse();
 	void serializeMedia();
+    void deserializeMedia();
 	void serializeCategory();
 	void serialize();
     void deserialize();
