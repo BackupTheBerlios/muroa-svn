@@ -100,7 +100,7 @@ string CCategoryItem::diff(const CCategoryItem* other) {
 	for(cit = m_sub_categories.begin(); cit != m_sub_categories.end(); cit++ ) {
 
 		childpath = (*cit)->getPath();
-		cerr << "outer for: cit: " << childpath << " other cit: " << (*other_cit)->getPath() << endl;
+		// cerr << "outer for: cit: " << childpath << " other cit: " << (*other_cit)->getPath() << endl;
 
 		if( other_cit == other->m_sub_categories.end() || childpath.compare( (*other_cit)->getPath()) < 0 ) {
 			// old is smaller than new or new has no sub_categories left-> this entry disappeared in new
