@@ -76,10 +76,11 @@ void CCollectionTest::serializeMedia() {
 }
 
 void CCollectionTest::deserializeMedia() {
-	CMediaItem *mItem = new CMediaItem("/path/to/file.mp3\tTest Artist 0\tTest Album 0	Test Title 9\t2008\t90\t3560093084", 0);
+	CMediaItem *mItem = new CMediaItem("/path/to/file.mp3\tTest Artist 0\tTest Album 0	Test Title 9\t2008\t90\t2665035088", 0);
 	size_t hashval = mItem->getHash();
-	CPPUNIT_ASSERT( hashval == 3560093084 );
+	CPPUNIT_ASSERT( hashval == 2665035088 );
 }
+
 
 void CCollectionTest::serializeCategory() {
 	CCategoryItem* base = new CCategoryItem();
