@@ -14,8 +14,8 @@
 
 class CMediaItem : public CItemBase {
 public:
-	CMediaItem(CCategoryItem*  parent);
-	CMediaItem(std::string text, CCategoryItem*  parent);
+	CMediaItem(CCategoryItem*  parent, int posInParent = -1);
+	CMediaItem(std::string text, CCategoryItem*  parent, int posInParent = -1);
 	virtual ~CMediaItem();
 
     inline std::string getAlbum() const { return m_album; }
@@ -38,7 +38,7 @@ public:
 	bool operator==(const CMediaItem& other);
 	inline bool operator!=(const CMediaItem& other){ return !operator==(other); };
 
-	void addChild(CMediaItem* newMediaItem);
+	void addChild(CMediaItem* newMediaItem, int pos = -1);
 	std::string serialize(bool asDiff = false);
 
 	static uint32_t hash( std::string stdstr );

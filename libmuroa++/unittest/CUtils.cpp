@@ -54,5 +54,6 @@ string CUtils::file2string(const string &fileName)
     }
     else {
     	cerr << "could not open file " << fileName << endl;
+    	return string();
    	}
 }

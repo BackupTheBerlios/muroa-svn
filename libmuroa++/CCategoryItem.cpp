@@ -63,9 +63,34 @@ void CCategoryItem::addChild(CCategoryItem* newSubCategory) {
 	m_sub_categories.push_back(newSubCategory);
 }
 
-void CCategoryItem::addChild(CMediaItem*    newMediaItem) {
-	m_media_items.push_back(newMediaItem);
+void CCategoryItem::addChild(CMediaItem*  newMediaItem, int pos) {
+	if(pos == -1) {
+		m_media_items.push_back(newMediaItem);
+	}
+	else {
+		m_media_items.insert( m_media_items.begin() + pos, newMediaItem );
+	}
 }
+
+CMediaItem* CCategoryItem::getMediaItem(int pos) {
+	return m_media_items[pos];
+}
+
+void CCategoryItem::delMediaItem(int pos) {
+	m_media_items.erase(m_media_items.begin() + pos);
+}
+
+
+void CCategoryItem::delCategory(CCategoryItem* categoryItem) {
+	std::vector<CCategoryItem*>::iterator cit;
+	for(cit = m_sub_categories.begin(); cit != m_sub_categories.end(); cit++ ) {
+		if(categoryItem == *cit) {
+			m_sub_categories.erase(cit);
+			break;
+		}
+	}
+}
+
 
 string CCategoryItem::serialize(bool asDiff) {
 	string result;
@@ -113,10 +138,10 @@ string CCategoryItem::diff(const CCategoryItem* other) {
 		while( other_cit != other->m_sub_categories.end()) {
 			string other_childpath = (*other_cit)->getPath();
 
-			cerr << "inner while: cit: " << childpath << " other cit: " << other_childpath << " ";
+			// cerr << "inner while: cit: " << childpath << " other cit: " << other_childpath << " ";
 
 			if( childpath.compare( other_childpath ) < 0  ) {
-				cerr << "break " << endl;
+				// cerr << "break " << endl;
 				break;
 			}
 			if( childpath.compare( other_childpath ) > 0  ) {
@@ -124,7 +149,7 @@ string CCategoryItem::diff(const CCategoryItem* other) {
 				diff.append(result);
 			}
 			else {
-				cerr << " doing diff: " << endl;
+				// cerr << " doing diff: " << endl;
 				// other_cit is either not present in cit or just differs
 				string result = (*cit)->diff(*other_cit);
 				diff.append(result);
@@ -136,8 +161,8 @@ string CCategoryItem::diff(const CCategoryItem* other) {
 	while( other_cit != other->m_sub_categories.end()) {
 		string other_childpath = (*other_cit)->getPath();
 
-		cerr << "later while: other cit: " << other_childpath << " ";
-		cerr << " doing diff anyway: " << endl;
+		// cerr << "later while: other cit: " << other_childpath << " ";
+		// cerr << " doing diff anyway: " << endl;
 		// other_cit is either not present in cit or just differs
 		string result = (*other_cit)->serialize(true);
 		diff.append(result);

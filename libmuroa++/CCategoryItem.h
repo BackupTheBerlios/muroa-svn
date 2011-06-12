@@ -39,7 +39,12 @@ public:
 	inline std::string getPath() const { return m_path; };
 
 	void addChild(CCategoryItem* newSubCategory);
-	void addChild(CMediaItem*    newMediaItem);
+	void addChild(CMediaItem*    newMediaItem, int pos = -1);
+
+	CMediaItem* getMediaItem(int pos);
+	void delMediaItem(int pos);
+
+	void delCategory(CCategoryItem* categoryItem);
 
 	std::string serialize(bool asDiff = false);
 

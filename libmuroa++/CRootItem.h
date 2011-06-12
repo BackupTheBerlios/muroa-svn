@@ -8,6 +8,8 @@
 #ifndef CROOTITEM_H_
 #define CROOTITEM_H_
 
+#include "MuroaExceptions.h"
+
 #include <string>
 #include <map>
 #include <iostream>
@@ -46,15 +48,15 @@ public:
 
 	CCategoryItem* addCategory(std::string name, CCategoryItem* parent = 0);
 
-	CMediaItem* addMediaItem(CCategoryItem* parent = 0);
-	CMediaItem* addMediaItem(std::string textWoPath, CCategoryItem* parent);
-	CMediaItem* addMediaItem(std::string text);
+	CMediaItem* addMediaItem(CCategoryItem* parent = 0, int posInParent = -1);
+	CMediaItem* addMediaItem(std::string textWoPath, CCategoryItem* parent, int posInParent = -1);
+	CMediaItem* addMediaItem(std::string text, int posInParent = -1);
 
 	std::string serialize();
 	void deserialize(std::string text);
 
 	std::string diff(const CRootItem& other);
-	void patch(std::string diff) throw(std::invalid_argument);
+	void patch(std::string diff) throw(std::invalid_argument, MalformedPatchEx);
 
 	bool operator==(const CRootItem& other);
 

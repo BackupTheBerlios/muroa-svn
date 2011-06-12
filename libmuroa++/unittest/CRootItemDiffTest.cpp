@@ -123,20 +123,97 @@ void CRootItemDiffTest::diff4() {
 
 
 
-void CRootItemDiffTest::patch() {
-	string orig = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch/origcollection.txt" );
+void CRootItemDiffTest::patch1() {
+	string orig = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch1/origcollection.txt" );
 	m_rootItem->deserialize(orig);
 
-	string diff = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch/diff.txt" );
+	string diff = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch1/diff.txt" );
 	m_rootItem->patch(diff);
 
-	string expected_modified = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch/modcollection.txt" );
+	string expected_modified = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch1/modcollection.txt" );
 	CRootItem refItem;
 	refItem.deserialize(expected_modified);
 
 	CPPUNIT_ASSERT( (*m_rootItem) == refItem );
 }
 
+void CRootItemDiffTest::patch2() {
+	string orig = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch2/origcollection.txt" );
+	m_rootItem->deserialize(orig);
 
+	string diff = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch2/diff.txt" );
+	m_rootItem->patch(diff);
 
+	string expected_modified = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch2/modcollection.txt" );
+	CRootItem refItem;
+	refItem.deserialize(expected_modified);
+
+	// cout << m_rootItem->serialize() << endl;
+
+	CPPUNIT_ASSERT( (*m_rootItem) == refItem );
+}
+
+void CRootItemDiffTest::patch3() {
+	string orig = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch3/origcollection.txt" );
+	m_rootItem->deserialize(orig);
+
+	string diff = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch3/diff.txt" );
+	m_rootItem->patch(diff);
+
+	string expected_modified = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch3/modcollection.txt" );
+	CRootItem refItem;
+	refItem.deserialize(expected_modified);
+
+	cout << m_rootItem->serialize() << endl;
+
+	CPPUNIT_ASSERT( (*m_rootItem) == refItem );
+}
+
+void CRootItemDiffTest::patch4() {
+	string orig = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch4/origcollection.txt" );
+	m_rootItem->deserialize(orig);
+
+	string diff = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch4/diff.txt" );
+	m_rootItem->patch(diff);
+
+	string expected_modified = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch4/modcollection.txt" );
+	CRootItem refItem;
+	refItem.deserialize(expected_modified);
+
+	cout << m_rootItem->serialize() << endl;
+
+	CPPUNIT_ASSERT( (*m_rootItem) == refItem );
+}
+
+void CRootItemDiffTest::patch5() {
+	string orig = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch5/origcollection.txt" );
+	m_rootItem->deserialize(orig);
+
+	string diff = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch5/diff.txt" );
+	m_rootItem->patch(diff);
+
+	string expected_modified = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch5/modcollection.txt" );
+	CRootItem refItem;
+	refItem.deserialize(expected_modified);
+
+	cout << m_rootItem->serialize() << endl;
+
+	CPPUNIT_ASSERT( (*m_rootItem) == refItem );
+}
+
+void CRootItemDiffTest::patch6() {
+	string orig = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch6/origcollection.txt" );
+	m_rootItem->deserialize(orig);
+
+	string diff = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch6/diff.txt" );
+	m_rootItem->patch(diff);
+
+	string expected_modified = CUtils::file2string( "unittest/testcases/CRootItemDiffTest_patch6/modcollection.txt" );
+	CRootItem refItem;
+	refItem.deserialize(expected_modified);
+
+	cout << m_rootItem->serialize() << endl;
+
+	CPPUNIT_ASSERT( (*m_rootItem) == refItem );
+}
 

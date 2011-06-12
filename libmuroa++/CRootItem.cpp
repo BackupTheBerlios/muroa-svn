@@ -41,22 +41,22 @@ CCategoryItem* CRootItem::addCategory(string name, CCategoryItem* parent) {
 	return newItem;
 }
 
-CMediaItem* CRootItem::addMediaItem(CCategoryItem* parent) {
+CMediaItem* CRootItem::addMediaItem(CCategoryItem* parent, int posInParent) {
 	if (parent == 0)  {
 		parent = m_base;
 	}
-	CMediaItem* newItem = new CMediaItem(parent);
+	CMediaItem* newItem = new CMediaItem(parent, posInParent);
 	return newItem;
 }
 
-CMediaItem* CRootItem::addMediaItem(string textWoPath, CCategoryItem* parent) {
+CMediaItem* CRootItem::addMediaItem(string textWoPath, CCategoryItem* parent, int posInParent) {
 
-	CMediaItem* newItem = new CMediaItem(textWoPath, parent);
+	CMediaItem* newItem = new CMediaItem(textWoPath, parent, posInParent);
 	return newItem;
 }
 
 
-CMediaItem* CRootItem::addMediaItem(string text) {
+CMediaItem* CRootItem::addMediaItem(string text, int posInParent) {
 
 	size_t pathPos = text.find('\t');
 	if(pathPos == string::npos) {
@@ -70,7 +70,7 @@ CMediaItem* CRootItem::addMediaItem(string text) {
 	}
 
 	string mItemText = text.substr(pathPos, text.size() - pathPos);
-	CMediaItem* newItem = new CMediaItem(mItemText, parent);
+	CMediaItem* newItem = new CMediaItem(mItemText, parent, posInParent);
 	return newItem;
 }
 
@@ -112,9 +112,12 @@ string CRootItem::diff(const CRootItem& other) {
 	return m_base->diff(other.m_base);
 }
 
-void CRootItem::patch(std::string diff) throw(std::invalid_argument) {
+void CRootItem::patch(std::string diff) throw(std::invalid_argument, MalformedPatchEx) {
 	istringstream iss(diff);
 
+	CCategoryItem* parent = 0;
+
+	bool new_category = true;
     boost::regex rx("^@@ -(\\d+),(\\d+)\\s+\\+(\\d+),(\\d+)\\s*@@$");
     int oldStart(0);
 	int oldLen(0);
@@ -122,6 +125,7 @@ void CRootItem::patch(std::string diff) throw(std::invalid_argument) {
 	int newLen(0);
 
 	int lineNr = 0;
+	int patchLineNr = 0;
 	int chunkSizeSum = 0;
 
 	string line;
@@ -130,8 +134,33 @@ void CRootItem::patch(std::string diff) throw(std::invalid_argument) {
 		if(iss.bad()) {
 			cerr << "CRootItem::patch: Error reading lines." << endl;
 		}
+		patchLineNr++;
 
-		if( line.find("@@") == 0 ) {
+		if( line.find("+++ ") == 0 ) {
+			// new or modified category
+			string path = line.substr(4, line.size() - 4);
+			parent = getItemPtr(path);
+			if(parent == 0) {
+				parent = mkPath(path);
+			}
+			new_category = true;
+			chunkSizeSum = 0;
+		}
+		else if(line.find("--- ") == 0) {
+			// remove a complete category
+			string path = line.substr(4, line.size() - 4);
+			CCategoryItem *categoryToRemove = getItemPtr(path);
+			if(categoryToRemove == 0) {
+				ostringstream oss;
+				oss << "CRootItem::patch (__FILE__:__LINE__): the category item to be removed was not be found in current collection(" << path << ").";
+				throw MalformedPatchEx(oss.str(), patchLineNr);
+			}
+			CCategoryItem* parent = categoryToRemove->getParent();
+			parent->delCategory(categoryToRemove);
+			/// TODO really remove category here
+			chunkSizeSum = 0;
+			new_category = true;
+		} else if( line.find("@@") == 0 ) {
 			// diff chunk header
 			boost::cmatch res;
 		    boost::regex_search(line.c_str(), res, rx);
@@ -150,54 +179,56 @@ void CRootItem::patch(std::string diff) throw(std::invalid_argument) {
 			lineNr = oldStart + chunkSizeSum;
 
 			chunkSizeSum += newLen - oldLen;
+
+			new_category = false;
 			// cerr << "- << oldStart << "," << oldLen << " + " << newStart << "," << newLen << endl;
 
 		}
-		else {
+		else if( line.size() > 0 ) {
 			char sign = line[0];
 			string content = line.substr(1, line.size() - 1);
+			assert(new_category == false);
 
-//			switch(sign){
-//				case '+': //insert
-//				{
-//					//cerr << "adding line : << lineNr << endl;;
-//					//cerr << "from diff : "<< content << endl;
-//					CMediaItem* newItem = addMediaItem(content);
-//					break;
-//				}
-//				case '-': //remove
-//				{
-//					if(content.compare(m_items.at(lineNr - 1)->getText()) != 0 )	// possible error:
-//					{
-//						cerr << "Error when removing line " << lineNr << " :" << endl;
-//						cerr << "line expected from diff : "<< content << endl;
-//						cerr << "differs form collection : " << m_items.at(lineNr - 1)->getText());
-//					}
-//					T* item = m_items.takeAt(lineNr - 1);
-//					m_hashMap.remove(item->getHash());
-//					delete item;
-//					lineNr--;
-//					break;
-//				}
-//				case ' ': //check
-//				{
-//					if(content.compare(m_items.at(lineNr - 1)->getText()) != 0 )	// possible error:
-//					{
-//						cerr << "Error when keeping line " << lineNr << " :" << endl;
-//						cerr << "line expected from diff : "<< content << endl;
-//						cerr << "differs form collection : " << m_items.at(lineNr - 1)->getText());
-//					}
-//					break;
-//				}
-//				default:
-//					break;
-//
-//			}
+			switch(sign){
+				case '+': //insert
+				{
+					//cerr << "adding line : << lineNr << endl;;
+					//cerr << "from diff : "<< content << endl;
+					CMediaItem* newItem = addMediaItem(content, lineNr - 1);
+					break;
+				}
+				case '-': //remove
+				{
+					CMediaItem *mItem = parent->getMediaItem(lineNr - 1);
+					string itemText = mItem->getText();
+					if(itemText.compare(0, itemText.size() - 1, content) != 0 )	// possible error:
+					{
+						cerr << "Error when removing line " << lineNr << " :" << endl;
+						cerr << "line expected from diff : "<< content << endl;
+						cerr << "differs form collection : " << mItem->getText();
+					}
+					parent->delMediaItem(lineNr - 1);
+					lineNr--;
+					break;
+				}
+				case ' ': //check
+				{
+					CMediaItem *mItem = parent->getMediaItem(lineNr - 1);
+					string itemText = mItem->getText();
+					if(itemText.compare(0, itemText.size() - 1, content) != 0 )	// possible error:
+					{
+						cerr << "Error when keeping line " << lineNr << " :" << endl;
+						cerr << "line expected from diff : "<< content << endl;
+						cerr << "differs form collection : " << mItem->getText();
+					}
+					break;
+				}
+				default:
+					break;
+			}
 			lineNr++;
-
 		}
 	}
-
 }
 
 
@@ -244,7 +275,7 @@ long CRootItem::str2long(std::string str) throw(std::invalid_argument) {
 	errno = 0;
 	char* endptr;
 	long iVal = strtol( str.c_str(), &endptr, 10);
-	if (errno != 0 || endptr != '\0' ) {
+	if (errno != 0 || *endptr != '\0' ) {
 		throw invalid_argument("convert string to int");
 	}
 	return iVal;

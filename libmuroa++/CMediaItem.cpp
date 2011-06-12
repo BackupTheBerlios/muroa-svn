@@ -28,10 +28,13 @@ uint32_t CMediaItem::hash( std::string stdstr ) {
 	return hash;
 }
 
-CMediaItem::CMediaItem(CCategoryItem*  parent) : CItemBase( parent ) {
+CMediaItem::CMediaItem(CCategoryItem*  parent, int posInParent) : CItemBase( parent ) {
+	if(m_parent) {
+		m_parent->addChild(this, posInParent);
+	}
 }
 
-CMediaItem::CMediaItem(std::string text, CCategoryItem*  parent)
+CMediaItem::CMediaItem(std::string text, CCategoryItem*  parent, int posInParent)
    : CItemBase( parent ) {
 
 	m_text = text;
@@ -70,7 +73,7 @@ CMediaItem::CMediaItem(std::string text, CCategoryItem*  parent)
 	m_hash = strtol(hashStr.c_str(), NULL, 10);
 
 	if(m_parent) {
-		m_parent->addChild(this);
+		m_parent->addChild(this, posInParent);
 	}
 	rehash();
 }
@@ -172,7 +175,7 @@ bool CMediaItem::operator==(const CMediaItem& other) {
 	return rc;
 }
 
-void CMediaItem::addChild(CMediaItem* newMediaItem) {
+void CMediaItem::addChild(CMediaItem* /*newMediaItem*/, int /*pos*/ ) {
 	throw std::runtime_error( "CMediaItem may not have children!");
 }
 

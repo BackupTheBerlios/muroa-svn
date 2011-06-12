@@ -40,7 +40,12 @@ class CRootItemDiffTest : public CppUnit::TestFixture {
 	  CPPUNIT_TEST( diff2 );
 	  CPPUNIT_TEST( diff3 );
 	  CPPUNIT_TEST( diff4 );
-	  CPPUNIT_TEST( patch );
+	  CPPUNIT_TEST( patch1 );
+	  CPPUNIT_TEST( patch2 );
+	  CPPUNIT_TEST( patch3 );
+	  CPPUNIT_TEST( patch4 );
+	  CPPUNIT_TEST( patch5 );
+	  CPPUNIT_TEST( patch6 );
 	  CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -55,7 +60,12 @@ public:
     void diff3();
     void diff4();
 
-    void patch();
+    void patch1();
+    void patch2();
+    void patch3();
+    void patch4();
+    void patch5();
+    void patch6();
 
 private:
 	CRootItem* m_rootItem;

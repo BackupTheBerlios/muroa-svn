@@ -1,9 +1,9 @@
 /***************************************************************************
- *                                                                         *
- *   CItemBase.h                                                           *
- *                                                                         *
- *   This file is part of libmuroa++                                       *
- *   Copyright (C) 2011 by Martin Runge <martin.runge@web.de>              *
+ *
+ *   MuroaExceptions.cpp
+ *
+ *   This file is part of libmuroa++                                  *
+ *   Copyright (C) 2011 by Martin Runge <martin.runge@web.de>           *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -21,40 +21,5 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef CITEMBASE_H_
-#define CITEMBASE_H_
+#include "MuroaExceptions.h"
 
-#include <string>
-#include <vector>
-
-class CMediaItem;
-class CCategoryItem;
-
-class CItemBase {
-public:
-	CItemBase(CCategoryItem*  parent);
-	virtual ~CItemBase();
-
-protected:
-	CItemBase(std::string text );
-
-public:
-	inline std::string getName() { return m_name; };
-
-	inline CCategoryItem* getParent() { return m_parent; };
-	virtual void addChild(CMediaItem* newChild, int pos = -1) = 0;
-
-	inline std::string getText() { return m_text; };
-	virtual std::string serialize(bool asDiff = false) = 0;
-
-protected:
-	std::string m_name;
-
-	CCategoryItem*  m_parent;
-
-	std::string m_text;
-	void replaceTabs(std::string& str);
-
-};
-
-#endif /* CITEMBASE_H_ */

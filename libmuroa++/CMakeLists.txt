@@ -17,6 +17,7 @@ set( SRC           CRootItem.cpp
                    CMediaItem.cpp
                    CCategoryItem.cpp
                    CDiff.cpp
+                   MuroaExceptions.cpp
                    libmain.cpp 
                    )
                   
@@ -26,6 +27,7 @@ set( HEADERS       CRootItem.h
                    CMediaItem.h
                    CCategoryItem.h
                    CDiff.h
+                   MuroaExceptions.h
                    )
                    
 include_directories(${CMAKE_SOURCE_DIR} ${Boost_INCLUDE_DIRS})

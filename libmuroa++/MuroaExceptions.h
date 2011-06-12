@@ -1,9 +1,9 @@
 /***************************************************************************
- *                                                                         *
- *   CItemBase.h                                                           *
- *                                                                         *
- *   This file is part of libmuroa++                                       *
- *   Copyright (C) 2011 by Martin Runge <martin.runge@web.de>              *
+ *
+ *   MuroaExceptions.h
+ *
+ *   This file is part of libmuroa++                                  *
+ *   Copyright (C) 2011 by Martin Runge <martin.runge@web.de>           *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -21,40 +21,26 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef CITEMBASE_H_
-#define CITEMBASE_H_
+#ifndef MUROAEXCEPTIONS_H_
+#define MUROAEXCEPTIONS_H_
 
+#include <exception>
 #include <string>
-#include <vector>
 
-class CMediaItem;
-class CCategoryItem;
-
-class CItemBase {
+class MalformedPatchEx: public std::exception {
 public:
-	CItemBase(CCategoryItem*  parent);
-	virtual ~CItemBase();
+	MalformedPatchEx(std::string reason, int line_nr) {};
+	virtual ~MalformedPatchEx() throw () {};
 
-protected:
-	CItemBase(std::string text );
+	std::string getReason() { return m_reason; };
+	int getLineNr() { return m_linr_nr; };
 
-public:
-	inline std::string getName() { return m_name; };
+	const char* what() { return m_reason.c_str(); }
 
-	inline CCategoryItem* getParent() { return m_parent; };
-	virtual void addChild(CMediaItem* newChild, int pos = -1) = 0;
-
-	inline std::string getText() { return m_text; };
-	virtual std::string serialize(bool asDiff = false) = 0;
-
-protected:
-	std::string m_name;
-
-	CCategoryItem*  m_parent;
-
-	std::string m_text;
-	void replaceTabs(std::string& str);
-
+private:
+	int m_linr_nr;
+	std::string m_reason;
 };
 
-#endif /* CITEMBASE_H_ */
+
+#endif /* MUROAEXCEPTIONS_H_ */
